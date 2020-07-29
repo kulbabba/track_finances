@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  TrackYourFinances
+
+  Created by Kapitan Kanapka on 15.07.2020.
+  Copyright © 2020 hippo. All rights reserved.
+*/
+"Text field should not be empty" = "Поле не повинне бути пустим";
+"Only numerics" = "Лише цифри";
+"No expences" = "Жодних витрат";

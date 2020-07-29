@@ -1,0 +1,75 @@
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "AL0-pL-Kdr"; */
+"AL0-pL-Kdr.normalTitle" = "+";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "HmD-UA-bSc"; */
+"HmD-UA-bSc.normalTitle" = "Зберегти";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "LdQ-CM-Lrn"; */
+"LdQ-CM-Lrn.normalTitle" = "Зберегти";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "MOs-ow-DTC"; */
+"MOs-ow-DTC.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "PqE-cu-iWg"; */
+"PqE-cu-iWg.normalTitle" = "Зберегти";
+
+/* Class = "UILabel"; text = "22 January"; ObjectID = "PtX-OG-Eps"; */
+"PtX-OG-Eps.text" = "22 January";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PxR-L5-V9e"; */
+"PxR-L5-V9e.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Qwf-V0-39M"; */
+"Qwf-V0-39M.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Statistics"; ObjectID = "TY8-Qt-TrM"; */
+"TY8-Qt-TrM.normalTitle" = "Статистика";
+
+/* Class = "UILabel"; text = "Price:"; ObjectID = "UUm-sS-3Js"; */
+"UUm-sS-3Js.text" = "Ціна:";
+
+/* Class = "UILabel"; text = "Language:"; ObjectID = "VrW-L9-TAS"; */
+"VrW-L9-TAS.text" = "Мова:";
+
+/* Class = "UIButton"; normalTitle = "11 January 2020"; ObjectID = "ada-U9-LpV"; */
+"ada-U9-LpV.normalTitle" = "11 January 2020";
+
+/* Class = "UILabel"; text = "To:"; ObjectID = "dJz-H4-OeN"; */
+"dJz-H4-OeN.text" = "До:";
+
+/* Class = "UILabel"; text = "Name:"; ObjectID = "dLb-wQ-WwM"; */
+"dLb-wQ-WwM.text" = "Ім'я:";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "eFJ-dt-PDV"; */
+"eFJ-dt-PDV.normalTitle" = "Кнопка";
+
+/* Class = "UILabel"; text = "Currency:"; ObjectID = "huN-t1-fKU"; */
+"huN-t1-fKU.text" = "Валюта:";
+
+/* Class = "UITextField"; placeholder = "Price"; ObjectID = "iFP-ko-LJd"; */
+"iFP-ko-LJd.placeholder" = "Ціна";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "kF1-Q8-adf"; */
+"kF1-Q8-adf.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Show Statistics"; ObjectID = "lgp-Id-qv3"; */
+"lgp-Id-qv3.normalTitle" = "Показати статистику";
+
+/* Class = "UILabel"; text = "Choose category"; ObjectID = "pSn-KL-J1P"; */
+"pSn-KL-J1P.text" = "Вибрати категорію";
+
+/* Class = "UIButton"; normalTitle = "21 March 2020"; ObjectID = "qkn-wX-Zs1"; */
+"qkn-wX-Zs1.normalTitle" = "21 March 2020";
+
+/* Class = "UIButton"; normalTitle = "22 January"; ObjectID = "xXs-a6-f2v"; */
+"xXs-a6-f2v.normalTitle" = "22 January";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "xaq-5Y-ope"; */
+"xaq-5Y-ope.placeholder" = "Name";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "zDH-dG-2Bn"; */
+"zDH-dG-2Bn.text" = "Label";
+
+/* Class = "UILabel"; text = "From:"; ObjectID = "zRS-4n-W6y"; */
+"zRS-4n-W6y.text" = "Від:";

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Categories" representedClassName="Categories" syncable="YES">
+        <attribute name="categoryName" optional="YES" attributeType="String"/>
+        <relationship name="expence" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expences" inverseName="category" inverseEntity="Expences"/>
+    </entity>
+    <entity name="Currencies" representedClassName="Currencies" syncable="YES">
+        <attribute name="currencyName" optional="YES" attributeType="String"/>
+        <attribute name="currencySymbol" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Expences" representedClassName="Expences" syncable="YES">
+        <attribute name="epenceDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="expenceCurrency" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Categories" inverseName="expence" inverseEntity="Categories"/>
+    </entity>
+    <elements>
+        <element name="Categories" positionX="-27" positionY="36" width="128" height="73"/>
+        <element name="Expences" positionX="-54" positionY="-9" width="128" height="118"/>
+        <element name="Currencies" positionX="-36" positionY="36" width="128" height="73"/>
+    </elements>
+</model>

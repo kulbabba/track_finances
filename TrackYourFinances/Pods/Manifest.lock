@@ -1,0 +1,47 @@
+PODS:
+  - CalendarKit (0.13.9):
+    - DateToolsSwift
+  - Charts (3.5.0):
+    - Charts/Core (= 3.5.0)
+  - Charts/Core (3.5.0)
+  - DateToolsSwift (5.0.0)
+  - IQKeyboardManagerSwift (6.5.5)
+  - KeychainAccess (4.1.0)
+  - SwiftValidator (4.0.0)
+
+DEPENDENCIES:
+  - CalendarKit
+  - Charts
+  - IQKeyboardManagerSwift
+  - KeychainAccess
+  - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, tag `4.2.0`)
+
+SPEC REPOS:
+  trunk:
+    - CalendarKit
+    - Charts
+    - DateToolsSwift
+    - IQKeyboardManagerSwift
+    - KeychainAccess
+
+EXTERNAL SOURCES:
+  SwiftValidator:
+    :git: https://github.com/jpotts18/SwiftValidator.git
+    :tag: 4.2.0
+
+CHECKOUT OPTIONS:
+  SwiftValidator:
+    :git: https://github.com/jpotts18/SwiftValidator.git
+    :tag: 4.2.0
+
+SPEC CHECKSUMS:
+  CalendarKit: 781330ab3151e10b115afd4ccfd2b45f6738ac26
+  Charts: 40a08591df1f8ad5c223ddedfb1a06da92f24f7c
+  DateToolsSwift: 4207ada6ad615d8dc076323d27037c94916dbfa6
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
+  KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
+  SwiftValidator: 249b6b3ae3b294266c5b9de134d94f18f2d5aa47
+
+PODFILE CHECKSUM: cf0d8b352d9316338cb64eca561184b8045b069b
+
+COCOAPODS: 1.9.3
