@@ -59,35 +59,68 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
-    func launchFirstViewController() {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-         appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
-        
-        if UserDefaults.standard.bool(forKey: "passcodeIsConfigured")  {
+//    func launchFirstViewController() {
+//
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+//            return
+//        }
+//
+//         appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
+//
+//        if UserDefaults.standard.bool(forKey: "passcodeIsConfigured")  {
+//            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+//                return
+//            }
+//
+//            appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
+//
+//            let launchViewController = PassCodeViewController()
+//
+//            let navigationController = UINavigationController(rootViewController: launchViewController)
+//            appDelegate.window?.rootViewController = navigationController
+//            appDelegate.window?.makeKeyAndVisible()
+//        }
+//        else {
+//
+//            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+//            let navigationController = UINavigationController.init(rootViewController: viewController)
+//            self.window?.rootViewController = navigationController
+//
+//            self.window?.makeKeyAndVisible()
+//        }
+//    }
+    
+        func launchFirstViewController() {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
                 return
             }
-            
             appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
             
-            let launchViewController = PassCodeViewController()
-            
-            let navigationController = UINavigationController(rootViewController: launchViewController)
-            appDelegate.window?.rootViewController = navigationController
+            if UserDefaults.standard.bool(forKey: "passcodeIsConfigured")  {
+    //            let launchViewController = PassCodeViewController()
+    //
+    //            let navigationController = UINavigationController(rootViewController: launchViewController)
+    //            appDelegate.window?.rootViewController = navigationController
+                
+                if UserDefaults.standard.bool(forKey: "faceIdIsConfigured") {
+                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "FaceIdTouchIdViewController") as! FaceIdTouchIdViewController
+                    let navigationController = UINavigationController.init(rootViewController: viewController)
+                    appDelegate.window?.rootViewController = navigationController
+                } else {
+                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "MainScreenWithPasscode") as! MainScreenWithPasscode
+                    let navigationController = UINavigationController.init(rootViewController: viewController)
+                    appDelegate.window?.rootViewController = navigationController
+                }
+            }
+            else {
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                let navigationController = UINavigationController.init(rootViewController: viewController)
+                appDelegate.window?.rootViewController = navigationController
+            }
             appDelegate.window?.makeKeyAndVisible()
         }
-        else {
-
-            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-            let navigationController = UINavigationController.init(rootViewController: viewController)
-            self.window?.rootViewController = navigationController
-
-            self.window?.makeKeyAndVisible()
-        }
-    }
 }

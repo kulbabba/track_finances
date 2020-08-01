@@ -33,6 +33,7 @@ class PasscodeViewController: UIViewController {
         let validator = Validator()
     
     override func viewDidLoad () {
+        super.viewDidLoad()
         passcodeIsConfigured =  UserDefaults.standard.bool(forKey: "passcodeIsConfigured")
         faceIdIsConfigured =  UserDefaults.standard.bool(forKey: "faceIdIsConfigured")
         
@@ -54,13 +55,17 @@ class PasscodeViewController: UIViewController {
         
     }
     
+    
     @IBAction func changePasscodeButton(_ sender: Any) {
         
     }
     
     @IBAction func saveButtonPasscode(_ sender: Any) {
-        view.endEditing(true)
-        validator.validate(self)
+        if passcodeSwitch.isOn && !newPasscoeTextField.isHidden {
+            view.endEditing(true)
+            validator.validate(self)
+        }
+
     }
     @IBAction func passcodeSwitch(_ sender: Any) {
         if passcodeSwitch.isOn {
@@ -82,18 +87,21 @@ class PasscodeViewController: UIViewController {
     func setupView () {
         if passcodeIsConfigured {
             passcodeSwitch.setOn(true, animated: true)
+            passcodeSwitch.isOn = true
             changePasscodeButtonOutlet.isHidden = false
             faceIdWarningPasscodeShouldBeConfigured.isHidden = true
             confirmPasscodeTextField.isHidden = true
             newPasscoeTextField.isHidden = true
-        }
-        if faceIdIsConfigured {
-            faceIdSwitch.setOn(true, animated: true)
-            faceIdWarningPasscodeShouldBeConfigured.isHidden = true
-        }
-        else {
+            
+            if faceIdIsConfigured {
+                faceIdSwitch.setOn(true, animated: true)
+                faceIdSwitch.isOn = true
+            }
+        } else {
             passcodeSwitch.setOn(false, animated: true)
             faceIdSwitch.setOn(false, animated: true)
+            passcodeSwitch.isOn = false
+            faceIdSwitch.isOn = false
             faceIdSwitch.isEnabled = false
             changePasscodeButtonOutlet.isHidden = true
             faceIdWarningPasscodeShouldBeConfigured.isHidden = false
@@ -115,7 +123,11 @@ class PasscodeViewController: UIViewController {
             confirmPasscodeTextField.isHidden = true
             newPasscoeTextField.isHidden = true
             faceIdSwitch.setOn(false, animated: true)
+            faceIdSwitch.isOn = false
             keychain["Password"] = nil
+            UserDefaults.standard.set(false, forKey: "faceIdIsConfigured")
+            UserDefaults.standard.set(false, forKey: "passcodeIsConfigured")
+            
         }
         
     }
@@ -177,7 +189,9 @@ private extension PasscodeViewController {
 extension PasscodeViewController {
     func saveButtonActions() {
         view.endEditing(true)
-        validator.validate(self)
+        if passcodeSwitch.isOn && !newPasscoeTextField.isHidden {
+            validator.validate(self)
+        }
     }
 }
 

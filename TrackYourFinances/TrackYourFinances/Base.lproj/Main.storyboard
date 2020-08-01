@@ -401,14 +401,14 @@
                                 <color key="separatorColor" red="0.39907478742266844" green="1" blue="0.94373756982846213" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrencyCell" id="uX5-1a-zqe" customClass="CurrencyCell" customModule="TrackYourFinances" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="208" height="49"/>
+                                        <rect key="frame" x="0.0" y="28" width="208" height="49.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uX5-1a-zqe" id="oSV-Tl-ko7">
-                                            <rect key="frame" x="0.0" y="0.0" width="208" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="208" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CurrencyName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVc-Bj-25C">
-                                                    <rect key="frame" x="19" y="14" width="170" height="21"/>
+                                                    <rect key="frame" x="19" y="14" width="170" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -870,6 +870,105 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVZ-WU-kMA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="99.776785714285708"/>
+        </scene>
+        <!--Face Id Touch Id View Controller-->
+        <scene sceneID="pfW-PT-22M">
+            <objects>
+                <viewController storyboardIdentifier="FaceIdTouchIdViewController" id="kc4-9q-ogc" customClass="FaceIdTouchIdViewController" customModule="TrackYourFinances" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rl2-Sh-g6Z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.108678382" green="0.1126395628" blue="0.15686468910000001" alpha="0.99563891270000004" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="0uW-Ss-D4W"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xDL-62-5bH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="314" y="1081"/>
+        </scene>
+        <!--Main Screen With Passcode-->
+        <scene sceneID="QjJ-Vo-OrW">
+            <objects>
+                <viewController storyboardIdentifier="MainScreenWithPasscode" id="fd9-86-beX" customClass="MainScreenWithPasscode" customModule="TrackYourFinances" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="emu-uC-tZX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Bdl-KC-jjz">
+                                <rect key="frame" x="77" y="174" width="260" height="50"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ajD-i2-WvZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="HSM-3D-9IA"/>
+                                            <constraint firstAttribute="height" constant="50" id="WED-46-B0b"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rck-PP-Jwb">
+                                        <rect key="frame" x="70" y="0.0" width="50" height="50"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="idb-IT-Pah"/>
+                                            <constraint firstAttribute="width" constant="50" id="oKv-6O-ovl"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nqO-nK-kfH">
+                                        <rect key="frame" x="140" y="0.0" width="50" height="50"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="QqM-JP-uDl"/>
+                                            <constraint firstAttribute="width" constant="50" id="Txz-a8-hUf"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yqB-9V-hy2">
+                                        <rect key="frame" x="210" y="0.0" width="50" height="50"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="dzt-4Y-r3U"/>
+                                            <constraint firstAttribute="width" constant="50" id="zoZ-YU-L57"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.108678382" green="0.1126395628" blue="0.15686468910000001" alpha="0.99563891270000004" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Bdl-KC-jjz" firstAttribute="top" secondItem="fTv-Xq-D1I" secondAttribute="top" constant="130" id="EDH-b3-qic"/>
+                            <constraint firstItem="Bdl-KC-jjz" firstAttribute="centerX" secondItem="emu-uC-tZX" secondAttribute="centerX" id="Wkf-3O-Jsc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fTv-Xq-D1I"/>
+                    </view>
+                    <connections>
+                        <outlet property="pin_four" destination="yqB-9V-hy2" id="Ose-c1-P4U"/>
+                        <outlet property="pin_one" destination="ajD-i2-WvZ" id="cNa-5B-zpu"/>
+                        <outlet property="pin_three" destination="nqO-nK-kfH" id="TJf-bS-8Vx"/>
+                        <outlet property="pin_two" destination="Rck-PP-Jwb" id="0Ix-Uf-922"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fXB-yg-y18" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048" y="1081"/>
         </scene>
     </scenes>
 </document>
