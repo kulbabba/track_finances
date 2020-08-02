@@ -521,7 +521,7 @@
                                     <constraint firstAttribute="height" constant="34" id="TW5-mI-Gne"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4s-ba-kMd">
                                 <rect key="frame" x="221" y="753" width="128" height="56"/>
@@ -605,7 +605,7 @@
                                     <constraint firstAttribute="height" constant="34" id="87u-qV-iIi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.108678382" green="0.1126395628" blue="0.15686468910000001" alpha="0.99563891270000004" colorSpace="custom" customColorSpace="sRGB"/>
