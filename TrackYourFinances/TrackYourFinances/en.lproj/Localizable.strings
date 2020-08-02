@@ -5,7 +5,7 @@
   Created by Kapitan Kanapka on 15.07.2020.
   Copyright © 2020 hippo. All rights reserved.
 */
-"Text field should not be empty" = "Text field should not be empty";
+"Text_field_should_not_be_empty" = "Text field should not be empty";
 "Only numerics" = "Only numerics";
 "No expences" = "No expences";
 "Biometric Authentication Unavailable" = "Biometric Authentication Unavailable";

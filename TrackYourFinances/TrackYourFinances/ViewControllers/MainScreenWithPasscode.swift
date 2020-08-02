@@ -49,7 +49,7 @@ class MainScreenWithPasscode: UIViewController, UITextInputTraits {
                     pin.backgroundColor =  Constants.greenColors
                 }
                 else {
-                    pin.backgroundColor =  UIColor.lightGray
+                    pin.backgroundColor = Constants.greyColors
                 }
             }
             
@@ -108,6 +108,7 @@ private extension MainScreenWithPasscode {
             let mainViewController: MainViewController = storyboard.instantiateViewController(withIdentifier: StoryBoardIdentifiersConstants.mainViewController) as! MainViewController
             
             navigationController?.pushViewController(mainViewController, animated: true)
+            navigationController?.viewControllers = [mainViewController]
         }
         else {
             code = ""
@@ -120,6 +121,7 @@ private extension MainScreenWithPasscode {
 private struct Constants {
     static let maxLength = 4
     static let greenColors = #colorLiteral(red: 0.3238684347, green: 0.8115482234, blue: 0.7658885481, alpha: 0.6133882705).withAlphaComponent(0.61)
+    static let greyColors = UIColor.lightGray
 }
 
 

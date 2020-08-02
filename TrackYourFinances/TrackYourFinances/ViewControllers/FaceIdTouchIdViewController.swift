@@ -31,11 +31,13 @@ extension FaceIdTouchIdViewController {
                         let storyboard = UIStoryboard(name: AppConstants.storyboardMain, bundle: nil)
                         let mainViewController: MainViewController = storyboard.instantiateViewController(withIdentifier: StoryBoardIdentifiersConstants.mainViewController) as! MainViewController
                         self?.navigationController?.pushViewController(mainViewController, animated: true)
+                        self?.navigationController?.viewControllers = [mainViewController]
                     } else {
                         
                         let storyboard = UIStoryboard(name: AppConstants.storyboardMain, bundle: nil)
                         let mainScreenWithPasscode: MainScreenWithPasscode = storyboard.instantiateViewController(withIdentifier: StoryBoardIdentifiersConstants.mainScreenWithPasscode) as! MainScreenWithPasscode
                         self?.navigationController?.pushViewController(mainScreenWithPasscode, animated: true)
+                        self?.navigationController?.viewControllers = [mainScreenWithPasscode]
                     }
                 }
             }
