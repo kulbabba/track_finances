@@ -129,6 +129,33 @@ class DBActions {
         return categoriesList
     }
     
+    func getCategoriesFromDbForSpecificDateWithExpenses(startDate: Date, endDate: Date) -> [Categories] {
+        var categoriesList: [Categories] = []
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return categoriesList
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: categoriesEntityName)
+        
+        fetchRequest.predicate = NSPredicate(format: "(epenceDate >= %@) AND (epenceDate <= %@) ", startDate.start(of: .day) as NSDate , endDate.end(of: .day) as NSDate)
+        
+        do {
+            if let categorylist = try managedContext.fetch(fetchRequest) as? [Categories] {
+                categoriesList = categorylist
+            }
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        return categoriesList
+    }
+    
     func getCurrenciesFromDb() -> [Currencies] {
         var currenciesList: [Currencies] = []
         guard let appDelegate =

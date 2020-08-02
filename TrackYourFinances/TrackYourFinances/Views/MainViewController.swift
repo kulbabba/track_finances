@@ -36,39 +36,14 @@ class MainViewController: UIViewController {
         dayHeaderView.backgroundColor = #colorLiteral(red: 0.1095174178, green: 0.1127971485, blue: 0.1583940983, alpha: 1).withAlphaComponent(1.0)
         dayHeaderView.delegate = self
         
-        let formattedDate = DateFormate.formateDate(date: Date())
+        let formattedDate = DateFormate.formateDateForStatistics(date: Date(), dateFormateString: "MMMMdd")
         dateLabelValue.setTitle(formattedDate, for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        categiriesWithValue = getCategoriesWithValues()
+        categiriesWithValue = CategoryFilter().filterCategoriesWithValues()
         showChartWithExpenses(categories: categiriesWithValue, date: chosenDate)
-    }
-    
-    func customizeChart(dataPoints: [String], values: [Double]) {
-        var dataEntries: [ChartDataEntry] = []
-        
-        for i in 0..<dataPoints.count {
-            let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i], data: dataPoints[i] as AnyObject)
-            dataEntries.append(dataEntry)
-        }
-        
-        let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
-        pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
-        pieChart.legend.enabled = false
-        
-        let pieChartData = PieChartData(dataSet: pieChartDataSet)
-        let format = NumberFormatter()
-        format.numberStyle = .none
-        let formatter = DefaultValueFormatter(formatter: format)
-        pieChartData.setValueFormatter(formatter)
-        
-        pieChart.data = pieChartData
-        pieChart.holeColor = UIColor.black.withAlphaComponent(0.0)
-        pieChart.entryLabelFont = UIFont(name: "BradleyHandITCTT-Bold", size: 12)
-        
-        pieChart.holeRadiusPercent = 0.52
     }
     
     @IBAction func settingsButton(_ sender: Any) {
@@ -118,66 +93,6 @@ class MainViewController: UIViewController {
     
 }
 
-extension MainViewController {
-    func getCategories() -> [Categories]{
-        var categoriesinDb: [Categories] = []
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return categoriesinDb
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "Categories")
-        
-        do {
-            if let categorylist = try managedContext.fetch(fetchRequest) as? [Categories] {
-                categoriesinDb = categorylist
-            }
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
-        return categoriesinDb
-    }
-    
-    func getCategoriesWithValues() -> [Categories] {
-        let actualCategories = getCategories()
-        return actualCategories.filter {$0.expence.count > 0 }
-    }
-    
-    func getCategoryForDate (date: Date, categories: [Categories]) -> [Categories] {
-        var categoriesForCurrentDate: [Categories] = []
-        categories.forEach { category in
-            let expensesForCurrentDate = Array(category.expence).filter {
-                $0.epenceDate!.isSameDay(date: date)
-            }
-            if expensesForCurrentDate.count > 0 {
-                
-                categoriesForCurrentDate.append(category)
-            }
-        }
-        return categoriesForCurrentDate
-    }
-    
-    func getCategoriesWithCalculatedExpense (categories: [Categories]) -> [(String, Int)] {
-        var categoryWithCalculatedExpence: [(String, Int)] = []
-        for category in categories {
-            var categoryExpences = 0
-            for expence in category.expence {
-                categoryExpences += Int(expence.price)
-            }
-            if categoryExpences != 0 {
-                categoryWithCalculatedExpence.append((category.categoryName!, categoryExpences ))
-            }
-        }
-        return categoryWithCalculatedExpence
-    }
-}
-
 extension MainViewController: DayViewDelegate {
     func dayViewDidSelectEventView(_ eventView: EventView) {
     }
@@ -199,7 +114,9 @@ extension MainViewController: DayViewDelegate {
     
     func dayView(dayView: DayView, didMoveTo date: Date) {
         chosenDate = date
-        let formattedDate = DateFormate.formateDate(date: date)
+        //let formattedDate = DateFormate.formateDate(date: date)
+        let formattedDate = DateFormate.formateDateForStatistics(date: date, dateFormateString: "MMMMdd")
+        
         dateLabelValue.setTitle(formattedDate, for: .normal)
         showChartWithExpenses(categories: categiriesWithValue, date: chosenDate)
     }
@@ -213,8 +130,6 @@ extension MainViewController: DayViewDelegate {
 extension MainViewController {
     func setCalendarStyle() -> CalendarStyle{
         let black = #colorLiteral(red: 0.1095174178, green: 0.1127971485, blue: 0.1583940983, alpha: 1).withAlphaComponent(1.0)
-        let darkGray = UIColor(white: 0.15, alpha: 1)
-        let lightGray = UIColor.lightGray
         let white = UIColor.white
         
         var selector = DaySelectorStyle()
@@ -259,8 +174,8 @@ extension MainViewController {
     
     func showChartWithExpenses(categories: [Categories], date: Date) {
         
-        let categoriesForCurrentDate = getCategoryForDate(date: date, categories: categories)
-        let categoryWithCalculatedExpence = getCategoriesWithCalculatedExpense(categories: categoriesForCurrentDate)
+        let categoriesForCurrentDate = CategoryFilter().filterCategoryForDate(date: date, categories: categories)
+        let categoryWithCalculatedExpence = CategoryFilter().filterCategoriesWithCalculatedExpense(categories: categoriesForCurrentDate)
         
         if categoryWithCalculatedExpence.count == 0 {
             pieChart.alpha = 0.0
@@ -274,4 +189,28 @@ extension MainViewController {
         )
     }
     
+    func customizeChart(dataPoints: [String], values: [Double]) {
+        var dataEntries: [ChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i], data: dataPoints[i] as AnyObject)
+            dataEntries.append(dataEntry)
+        }
+        
+        let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
+        pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+        pieChart.legend.enabled = false
+        
+        let pieChartData = PieChartData(dataSet: pieChartDataSet)
+        let format = NumberFormatter()
+        format.numberStyle = .none
+        let formatter = DefaultValueFormatter(formatter: format)
+        pieChartData.setValueFormatter(formatter)
+        
+        pieChart.data = pieChartData
+        pieChart.holeColor = UIColor.black.withAlphaComponent(0.0)
+        pieChart.entryLabelFont = UIFont(name: "BradleyHandITCTT-Bold", size: 12)
+        
+        pieChart.holeRadiusPercent = 0.52
+    }    
 }

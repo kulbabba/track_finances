@@ -11,15 +11,15 @@ import Charts
 
 class DateFormate {
     
-    static func formateDate (date: Date) -> String {
-        let dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMMdd", options: 0, locale: Locale.current)
-        let formatter = DateFormatter()
-        formatter.dateFormat = dateFormat
-        return formatter.string(from: date)
-    }
+//    static func formateDate (date: Date) -> String {
+//        let dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMMdd", options: 0, locale: Locale.current)
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = dateFormat
+//        return formatter.string(from: date)
+//    }
     
-    static func formateDateForStatistics (date: Date) -> String {
-        let dateFormat = DateFormatter.dateFormat(fromTemplate: "ddMMMMyyyy", options: 0, locale: Locale.current)
+    static func formateDateForStatistics (date: Date, dateFormateString: String = "ddMMMMyyyy") -> String {
+        let dateFormat = DateFormatter.dateFormat(fromTemplate: dateFormateString, options: 0, locale: Locale.current)
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat
         return formatter.string(from: date)
