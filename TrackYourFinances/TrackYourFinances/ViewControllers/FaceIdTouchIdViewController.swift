@@ -15,6 +15,8 @@ class FaceIdTouchIdViewController: UIViewController {
     }
 }
 
+// MARK: - Authentication
+
 extension FaceIdTouchIdViewController {
     func authenticateUser () {
         let context = LAContext()

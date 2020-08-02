@@ -71,6 +71,8 @@ class GraphsStatisticViewController: UIViewController {
     }
 }
 
+// MARK: - ChartActions
+
 extension GraphsStatisticViewController {
     func updateGraph () {
         var lineChartEntry = [ChartDataEntry]()

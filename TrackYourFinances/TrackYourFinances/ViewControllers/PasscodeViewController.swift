@@ -184,6 +184,8 @@ private extension PasscodeViewController {
     
 }
 
+// MARK: - Actions
+
 extension PasscodeViewController {
     func saveButtonActions() {
         view.endEditing(true)
@@ -192,6 +194,8 @@ extension PasscodeViewController {
         }
     }
 }
+
+// MARK: - ValidationDelegate
 
 extension PasscodeViewController: ValidationDelegate{
     func validationSuccessful() {

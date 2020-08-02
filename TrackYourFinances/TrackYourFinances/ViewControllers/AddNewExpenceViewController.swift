@@ -117,7 +117,9 @@ extension AddNewExpenceViewController {
     }
 }
 
-extension AddNewExpenceViewController: ValidationDelegate{
+// MARK: - ValidationDelegate
+
+extension AddNewExpenceViewController: ValidationDelegate {
     func validationSuccessful() {
         let storyboard = UIStoryboard(name: AppConstants.storyboardMain, bundle: nil)
         let chooseCategoryViewController: ChooseCategoryViewController = storyboard.instantiateViewController(withIdentifier: "ChooseCategoryViewController") as! ChooseCategoryViewController

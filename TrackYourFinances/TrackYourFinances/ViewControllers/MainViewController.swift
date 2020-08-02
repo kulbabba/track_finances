@@ -83,6 +83,8 @@ class MainViewController: UIViewController {
     }
 }
 
+// MARK: - DayViewDelegate
+
 extension MainViewController: DayViewDelegate {
     func dayViewDidSelectEventView(_ eventView: EventView) {
     }
@@ -113,6 +115,8 @@ extension MainViewController: DayViewDelegate {
     func dayView(dayView: DayView, didUpdate event: EventDescriptor) {
     }
 }
+
+// MARK: - CalendarActions
 
 extension MainViewController {
     func setCalendarStyle() -> CalendarStyle{
