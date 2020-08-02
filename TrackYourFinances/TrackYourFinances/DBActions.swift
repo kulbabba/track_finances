@@ -15,16 +15,18 @@ class DBActions {
     let currenciesEntityName = "Currencies"
     let expensesEntityName = "Expences"
     
-    func preloadData () {
-        guard let items = CsvActions().parseCategoriesCSV() else { return }
-        
+    private var managedContext: NSManagedObjectContext? {
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
-                return
+                return nil
         }
         
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
+        return appDelegate.persistentContainer.viewContext
+    }
+    
+    func preloadData () {
+        guard let items = CsvActions().parseCategoriesCSV() else { return }
+        guard let managedContext = managedContext else { return }
         
         for item in items {
             let entity =
@@ -33,8 +35,6 @@ class DBActions {
             
             let category = Categories(entity: entity,
                                       insertInto: managedContext)
-            
-            
             category.categoryName = item
             do {
                 try managedContext.save()
@@ -46,14 +46,7 @@ class DBActions {
     
     func preloadCurrencies() {
         guard let items = CsvActions().parseCurrenciesCSV() else { return }
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
+        guard let managedContext = managedContext else { return }
         
         for item in items {
             let entity =
@@ -74,15 +67,7 @@ class DBActions {
     }
     
     func save(nameValue: String, priceValue: Int, categoryValue: Categories, expenceDate: Date) {
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
+        guard let managedContext = managedContext else { return }
         
         let entity =
             NSEntityDescription.entity(forEntityName: expensesEntityName,
@@ -105,14 +90,7 @@ class DBActions {
     
     func getCategoriesFromDb() -> [Categories] {
         var categoriesList: [Categories] = []
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return categoriesList
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
+        guard let managedContext = managedContext else { return categoriesList }
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: categoriesEntityName)
         
@@ -130,13 +108,7 @@ class DBActions {
     
     func getCategoriesFromDbForSpecificDateWithExpenses(startDate: Date, endDate: Date) -> [Categories] {
         var categoriesList: [Categories] = []
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return categoriesList
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
+        guard let managedContext = managedContext else { return categoriesList }
         
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: categoriesEntityName)
@@ -157,13 +129,7 @@ class DBActions {
     
     func getCurrenciesFromDb() -> [Currencies] {
         var currenciesList: [Currencies] = []
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return currenciesList
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
+        guard let managedContext = managedContext else { return currenciesList }
         
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: currenciesEntityName)
@@ -182,13 +148,7 @@ class DBActions {
     
     func getExpensesForSpecificDate(startDate: Date, endDate: Date) -> [Expences] {
         var expensesList: [Expences] = []
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return expensesList
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
+        guard let managedContext = managedContext else { return expensesList }
         
         let fetchRequest =
             NSFetchRequest<Expences>(entityName: expensesEntityName)
@@ -202,9 +162,8 @@ class DBActions {
             if let expedddnses = try managedContext.fetch(delete) as? [Expences] {
                 expensesList = expedddnses
             }
-            
-            
-            if let expenses = try managedContext.fetch(fetchRequest) as? [Expences] {
+                
+            if let expenses = try? managedContext.fetch(fetchRequest) {
                 expensesList = expenses
             }
             
