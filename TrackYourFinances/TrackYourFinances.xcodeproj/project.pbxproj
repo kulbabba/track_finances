@@ -59,12 +59,12 @@
 		7C1E44C724C082030077FF66 /* APiRequestActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APiRequestActions.swift; sourceTree = "<group>"; };
 		7C1E44C924C08E670077FF66 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		7C1E44CB24C090050077FF66 /* FixerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixerResponse.swift; sourceTree = "<group>"; };
-		7C1E44CD24C0EFF20077FF66 /* Expences+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expences+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		7C1E44CE24C0EFF20077FF66 /* Expences+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expences+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		7C1E44CD24C0EFF20077FF66 /* Expences+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Expences+CoreDataClass.swift"; path = "TrackYourFinances/DBEntities/Expences+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		7C1E44CE24C0EFF20077FF66 /* Expences+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Expences+CoreDataProperties.swift"; path = "TrackYourFinances/DBEntities/Expences+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7C1E44D124C3472B0077FF66 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7C1E44D324C349570077FF66 /* Currencies.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = Currencies.csv; sourceTree = "<group>"; };
-		7C1E44D924C35C3E0077FF66 /* Currencies+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currencies+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		7C1E44DA24C35C3E0077FF66 /* Currencies+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currencies+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		7C1E44D924C35C3E0077FF66 /* Currencies+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Currencies+CoreDataClass.swift"; path = "TrackYourFinances/DBEntities/Currencies+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		7C1E44DA24C35C3E0077FF66 /* Currencies+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Currencies+CoreDataProperties.swift"; path = "TrackYourFinances/DBEntities/Currencies+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7C1E44DD24C35CE00077FF66 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		7C1E44E624C72D090077FF66 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
 		7C661B4A24D47CEB009A8B6A /* MainScreenWithPasscode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenWithPasscode.swift; sourceTree = "<group>"; };
@@ -84,8 +84,8 @@
 		7C9D1FC324B3D5E0004CA85D /* GraphsStatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsStatisticViewController.swift; sourceTree = "<group>"; };
 		7C9D1FD424B46555004CA85D /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		7C9D1FD624B48DE1004CA85D /* UserDefaults_isFirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults_isFirstLaunch.swift; sourceTree = "<group>"; };
-		7C9D1FE824B4B8C5004CA85D /* Categories+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Categories+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		7C9D1FE924B4B8C5004CA85D /* Categories+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Categories+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		7C9D1FE824B4B8C5004CA85D /* Categories+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Categories+CoreDataClass.swift"; path = "TrackYourFinances/DBEntities/Categories+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		7C9D1FE924B4B8C5004CA85D /* Categories+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Categories+CoreDataProperties.swift"; path = "TrackYourFinances/DBEntities/Categories+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7C9D1FF024BA193C004CA85D /* DateFormate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormate.swift; sourceTree = "<group>"; };
 		7C9D1FF224BB3CFF004CA85D /* ExpencesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpencesCell.swift; sourceTree = "<group>"; };
 		D134583999BF752EE7A3A457 /* Pods-TrackYourFinances.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackYourFinances.debug.xcconfig"; path = "Target Support Files/Pods-TrackYourFinances/Pods-TrackYourFinances.debug.xcconfig"; sourceTree = "<group>"; };
@@ -120,6 +120,62 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7C661B4E24D6C7FD009A8B6A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7C661B4C24D47D67009A8B6A /* FaceIdTouchIdViewController.swift */,
+				7C1E44E624C72D090077FF66 /* PasscodeViewController.swift */,
+				7C9D1FA424AE7AC6004CA85D /* MainViewController.swift */,
+				7C661B4A24D47CEB009A8B6A /* MainScreenWithPasscode.swift */,
+				7C9D1FBF24B37A76004CA85D /* AddNewExpenceViewController.swift */,
+				7C9D1FC124B3D4B2004CA85D /* ChooseCategoryViewController.swift */,
+				7C9D1FBD24B379F1004CA85D /* StatisticsViewController.swift */,
+				7C9D1FC324B3D5E0004CA85D /* GraphsStatisticViewController.swift */,
+				7C1E44D124C3472B0077FF66 /* SettingsViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7C661B5024D6C824009A8B6A /* DBEntities */ = {
+			isa = PBXGroup;
+			children = (
+				7C1E44D924C35C3E0077FF66 /* Currencies+CoreDataClass.swift */,
+				7C1E44DA24C35C3E0077FF66 /* Currencies+CoreDataProperties.swift */,
+				7C1E44CD24C0EFF20077FF66 /* Expences+CoreDataClass.swift */,
+				7C1E44CE24C0EFF20077FF66 /* Expences+CoreDataProperties.swift */,
+				7C9D1FE824B4B8C5004CA85D /* Categories+CoreDataClass.swift */,
+				7C9D1FE924B4B8C5004CA85D /* Categories+CoreDataProperties.swift */,
+			);
+			path = DBEntities;
+			sourceTree = "<group>";
+		};
+		7C661B5124D6C903009A8B6A /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				7C1E44DD24C35CE00077FF66 /* CurrencyCell.swift */,
+				7C9D1FD424B46555004CA85D /* CategoryCell.swift */,
+				7C9D1FF224BB3CFF004CA85D /* ExpencesCell.swift */,
+			);
+			path = TableCells;
+			sourceTree = "<group>";
+		};
+		7C661B5224D6C93E009A8B6A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7C1E44A924BF2B390077FF66 /* SwiftValidatorExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7C661B5324D6C9DC009A8B6A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7C1E44A724BC55480077FF66 /* Categories.csv */,
+				7C1E44D324C349570077FF66 /* Currencies.csv */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		7C9D1F9424AE7AC6004CA85D = {
 			isa = PBXGroup;
 			children = (
@@ -141,41 +197,25 @@
 		7C9D1F9F24AE7AC6004CA85D /* TrackYourFinances */ = {
 			isa = PBXGroup;
 			children = (
-				7C1E44D924C35C3E0077FF66 /* Currencies+CoreDataClass.swift */,
-				7C1E44DA24C35C3E0077FF66 /* Currencies+CoreDataProperties.swift */,
-				7C1E44DD24C35CE00077FF66 /* CurrencyCell.swift */,
-				7C1E44CD24C0EFF20077FF66 /* Expences+CoreDataClass.swift */,
-				7C1E44CE24C0EFF20077FF66 /* Expences+CoreDataProperties.swift */,
-				7C9D1FE824B4B8C5004CA85D /* Categories+CoreDataClass.swift */,
-				7C9D1FE924B4B8C5004CA85D /* Categories+CoreDataProperties.swift */,
+				7C661B5324D6C9DC009A8B6A /* Resources */,
+				7C661B5024D6C824009A8B6A /* DBEntities */,
+				7C661B4E24D6C7FD009A8B6A /* Views */,
+				7C661B5124D6C903009A8B6A /* TableCells */,
+				7C661B5224D6C93E009A8B6A /* Extensions */,
+				7C9D1FA024AE7AC6004CA85D /* AppDelegate.swift */,
 				7C1E44C724C082030077FF66 /* APiRequestActions.swift */,
 				7C1E44CB24C090050077FF66 /* FixerResponse.swift */,
 				7C1E44C924C08E670077FF66 /* Currency.swift */,
-				7C9D1FA024AE7AC6004CA85D /* AppDelegate.swift */,
-				7C661B4C24D47D67009A8B6A /* FaceIdTouchIdViewController.swift */,
+				7C9D1FA224AE7AC6004CA85D /* SceneDelegate.swift */,
 				7C1E44BA24BF642B0077FF66 /* DBActions.swift */,
 				7C1E44B824BF63AA0077FF66 /* IQKeyboardManagerSettings.swift */,
-				7C1E44A724BC55480077FF66 /* Categories.csv */,
-				7C661B4A24D47CEB009A8B6A /* MainScreenWithPasscode.swift */,
-				7C1E44D324C349570077FF66 /* Currencies.csv */,
 				7C9D1FD624B48DE1004CA85D /* UserDefaults_isFirstLaunch.swift */,
-				7C9D1FA224AE7AC6004CA85D /* SceneDelegate.swift */,
-				7C9D1FA424AE7AC6004CA85D /* MainViewController.swift */,
 				7C9D1FF024BA193C004CA85D /* DateFormate.swift */,
-				7C9D1FBF24B37A76004CA85D /* AddNewExpenceViewController.swift */,
-				7C9D1FBD24B379F1004CA85D /* StatisticsViewController.swift */,
-				7C9D1FD424B46555004CA85D /* CategoryCell.swift */,
-				7C9D1FF224BB3CFF004CA85D /* ExpencesCell.swift */,
 				7C9D1FA624AE7AC6004CA85D /* Main.storyboard */,
-				7C1E44E624C72D090077FF66 /* PasscodeViewController.swift */,
-				7C9D1FC324B3D5E0004CA85D /* GraphsStatisticViewController.swift */,
-				7C9D1FC124B3D4B2004CA85D /* ChooseCategoryViewController.swift */,
-				7C1E44D124C3472B0077FF66 /* SettingsViewController.swift */,
 				7C9D1FAC24AE7ACA004CA85D /* Assets.xcassets */,
 				7C9D1FAE24AE7ACA004CA85D /* LaunchScreen.storyboard */,
 				7C9D1FB124AE7ACA004CA85D /* Info.plist */,
 				7C9D1FA924AE7AC6004CA85D /* TrackYourFinances.xcdatamodeld */,
-				7C1E44A924BF2B390077FF66 /* SwiftValidatorExtensions.swift */,
 				7C1E44B624BF5F5A0077FF66 /* Localizable.strings */,
 			);
 			path = TrackYourFinances;
