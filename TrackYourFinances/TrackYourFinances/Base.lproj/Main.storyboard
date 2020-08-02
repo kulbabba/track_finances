@@ -43,7 +43,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="addExpensesButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TSe-OH-6x0"/>
                                     <segue destination="F3X-Kr-LAc" kind="show" identifier="AddNewExpenceViewController" id="Id1-Zj-RKt"/>
                                 </connections>
                             </button>
@@ -57,7 +56,6 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="statisticsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5v4-aW-Cqt"/>
                                     <segue destination="C2l-Ts-Gnj" kind="show" id="hPj-QO-Qvc"/>
                                 </connections>
                             </button>
@@ -65,7 +63,6 @@
                                 <rect key="frame" x="377" y="96" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="settingsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YZb-zg-cT6"/>
                                     <segue destination="j3E-Dx-t0O" kind="show" id="0Dg-An-YWc"/>
                                 </connections>
                             </button>

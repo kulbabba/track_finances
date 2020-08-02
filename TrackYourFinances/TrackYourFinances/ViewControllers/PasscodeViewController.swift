@@ -210,11 +210,11 @@ extension PasscodeViewController: ValidationDelegate{
     func validationFailed(_ errors: [(Validatable, ValidationError)]) {
         for (field, error) in errors {
             if let field = field as? UITextField {
-                field.layer.borderColor = #colorLiteral(red: 0.598151967, green: 0.167491116, blue: 0.2818549418, alpha: 0.8676155822).withAlphaComponent(1.0).cgColor
+                field.layer.borderColor = Constants.redColors.cgColor
                 field.layer.borderWidth = 1.0
             }
             error.errorLabel?.text = error.errorMessage
-            error.errorLabel?.textColor = #colorLiteral(red: 0.598151967, green: 0.167491116, blue: 0.2818549418, alpha: 0.8676155822).withAlphaComponent(1.0)
+            error.errorLabel?.textColor = Constants.redColors
             error.errorLabel?.isHidden = false
         }
     }
@@ -222,4 +222,5 @@ extension PasscodeViewController: ValidationDelegate{
 
 private struct Constants {
     static let maxPasswordLengh = 4
+    static let redColors = #colorLiteral(red: 0.598151967, green: 0.167491116, blue: 0.2818549418, alpha: 0.8676155822).withAlphaComponent(1.0)
 }

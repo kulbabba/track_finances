@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
         
         let calendarStyle = setCalendarStyle()
         dayHeaderView.updateStyle(calendarStyle)
-        dayHeaderView.backgroundColor = #colorLiteral(red: 0.1095174178, green: 0.1127971485, blue: 0.1583940983, alpha: 1).withAlphaComponent(1.0)
+        dayHeaderView.backgroundColor = Constants.blackColors
         dayHeaderView.delegate = self
         let formattedDate = DateFormate.formateDateForStatistics(date: Date(), dateFormateString: Constants.dateFormat)
         dateLabelValue.setTitle(formattedDate, for: .normal)
@@ -43,15 +43,6 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         categiriesWithValue = CategoryFilter().filterCategoriesWithValues()
         showChartWithExpenses(categories: categiriesWithValue, date: chosenDate)
-    }
-    
-    @IBAction func settingsButton(_ sender: Any) {
-    }
-    
-    @IBAction func statisticsButton(_ sender: Any) {
-    }
-    
-    @IBAction func addExpensesButton(_ sender: Any) {
     }
     
     private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
@@ -127,16 +118,16 @@ extension MainViewController {
         selector.activeTextColor = white
         selector.inactiveTextColor = white
         
-        selector.selectedBackgroundColor = #colorLiteral(red: 0.598151967, green: 0.167491116, blue: 0.2818549418, alpha: 0.8676155822).withAlphaComponent(1.0)
-        selector.inactiveBackgroundColor = #colorLiteral(red: 0.3238684347, green: 0.8115482234, blue: 0.7658885481, alpha: 0.6133882705).withAlphaComponent(0.61)
+        selector.selectedBackgroundColor = Constants.redColors
+        selector.inactiveBackgroundColor = Constants.greenColors
         
-        selector.todayInactiveTextColor = #colorLiteral(red: 0.598151967, green: 0.167491116, blue: 0.2818549418, alpha: 0.8676155822).withAlphaComponent(1.0)
+        selector.todayInactiveTextColor = Constants.redColors
         selector.todayActiveTextColor = white
-        selector.todayActiveBackgroundColor = #colorLiteral(red: 0.598151967, green: 0.167491116, blue: 0.2818549418, alpha: 0.8676155822).withAlphaComponent(1.0)
+        selector.todayActiveBackgroundColor = Constants.redColors
         
         var daySymbols = DaySymbolsStyle()
-        daySymbols.weekDayColor = #colorLiteral(red: 0.3238684347, green: 0.8115482234, blue: 0.7658885481, alpha: 0.6133882705).withAlphaComponent(0.61)
-        daySymbols.weekendColor = #colorLiteral(red: 0.3238684347, green: 0.8115482234, blue: 0.7658885481, alpha: 0.6133882705).withAlphaComponent(0.61)
+        daySymbols.weekDayColor = Constants.greenColors
+        daySymbols.weekendColor = Constants.greenColors
         
         var swipeLabel = SwipeLabelStyle()
         swipeLabel.textColor = white
@@ -211,6 +202,8 @@ private struct Constants {
     static let swipeLabelSize: CGFloat = 0.0
     static let swipeLabelFont = "ArialMT"
     static let dateFormat = "MMMMdd"
-    
+    static let redColors = #colorLiteral(red: 0.598151967, green: 0.167491116, blue: 0.2818549418, alpha: 0.8676155822).withAlphaComponent(1.0)
+    static let greenColors = #colorLiteral(red: 0.3238684347, green: 0.8115482234, blue: 0.7658885481, alpha: 0.6133882705).withAlphaComponent(0.61)
+    static let blackColors = #colorLiteral(red: 0.1095174178, green: 0.1127971485, blue: 0.1583940983, alpha: 1).withAlphaComponent(1.0)
 }
 

@@ -27,7 +27,7 @@ class GraphsStatisticViewController: UIViewController {
     override func viewDidLoad() {
         fromDateLabel.setTitle(DateFormate.formateDateForStatistics(date: fromDateValue), for: .normal)
         toDateLabel.setTitle(DateFormate.formateDateForStatistics(date: toDateValue), for: .normal)
-        datePicker.setValue(UIColor.white, forKeyPath: "textColor")
+        datePicker.setValue(UIColor.white, forKeyPath: Constants.keyPathTextColor)
         datePicker.alpha = 0.0
         datePicker.maximumDate = maximumToDate
     }
@@ -153,4 +153,8 @@ extension GraphsStatisticViewController {
         
         return expencesSortedByDays
     }
+}
+
+private struct Constants {
+    static let keyPathTextColor = "textColor"
 }

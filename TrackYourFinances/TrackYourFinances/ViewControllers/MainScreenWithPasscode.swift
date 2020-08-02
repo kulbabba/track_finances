@@ -19,12 +19,11 @@ class MainScreenWithPasscode: UIViewController, UITextInputTraits {
     
     var didFinishedEnterCode:((String)-> Void)?
     var pinList: [UIView] = []
-    var maxLength = 4
     
     var code: String = "" {
         didSet {
             updateStack(by: code)
-            if code.count == maxLength, let didFinishedEnterCode = didFinishedEnterCode {
+            if code.count == Constants.maxLength, let didFinishedEnterCode = didFinishedEnterCode {
                 self.resignFirstResponder()
                 didFinishedEnterCode(code)
                 
@@ -47,7 +46,7 @@ class MainScreenWithPasscode: UIViewController, UITextInputTraits {
         for pin in pinList {
             if let pinIndex = pinList.firstIndex(of: pin) {
                 if pinIndex < enteredPinLength {
-                    pin.backgroundColor =  #colorLiteral(red: 0.3238684347, green: 0.8115482234, blue: 0.7658885481, alpha: 0.6133882705).withAlphaComponent(0.61)
+                    pin.backgroundColor =  Constants.greenColors
                 }
                 else {
                     pin.backgroundColor =  UIColor.lightGray
@@ -66,7 +65,7 @@ extension MainScreenWithPasscode: UIKeyInput {
     }
     
     func insertText(_ text: String) {
-        if code.count == maxLength {
+        if code.count == Constants.maxLength {
             return
         }
         code.append(contentsOf: text)
@@ -117,3 +116,10 @@ private extension MainScreenWithPasscode {
         }
     }
 }
+
+private struct Constants {
+    static let maxLength = 4
+    static let greenColors = #colorLiteral(red: 0.3238684347, green: 0.8115482234, blue: 0.7658885481, alpha: 0.6133882705).withAlphaComponent(0.61)
+}
+
+
