@@ -17,7 +17,7 @@ class AddNewExpenceViewController: UIViewController {
     @IBOutlet weak var priceErrorLabel: UILabel!
     @IBOutlet weak var nameErrorLabel: UILabel!
     @IBOutlet weak var saveButtonOutlet: UIButton!
-
+    
     @IBOutlet weak var saveButtonTopConstraints: NSLayoutConstraint!
     @IBOutlet weak var saveButtonBottomConstraint: NSLayoutConstraint!
     var newExpencesName: String = ""
@@ -25,11 +25,6 @@ class AddNewExpenceViewController: UIViewController {
     var expenceDate: Date = Date()
     
     let validator = Validator()
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        nameTextField.delegate = self
-//        priceTextField.delegate = self
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,43 +37,22 @@ class AddNewExpenceViewController: UIViewController {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                           action: #selector(self.didTap))
-
+        
         priceTextField.addDoneOnKeyboardWithTarget(self, action: #selector(didPressOnDoneButton))
-        
-//        priceTextField.addr
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
         
         validator.registerField(nameTextField,errorLabel: nameErrorLabel, rules: [RequiredRule(message: NSLocalizedString("Text field should not be empty", comment: ""))])
         validator.registerField(priceTextField,errorLabel: priceErrorLabel, rules: [RequiredRule(message: NSLocalizedString("Text field should not be empty", comment: "")),
-                                                        PriceRule(message: NSLocalizedString("Only numerics", comment: ""))])
+                                                                                    PriceRule(message: NSLocalizedString("Only numerics", comment: ""))])
         
-
+        
         view.addGestureRecognizer(tapGestureRecognizer)
         
         [nameTextField, priceTextField].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
-        
-        
     }
     
     @IBAction func saveButton(_ sender: Any) {
         saveButtonActions()
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        view.endEditing(true)
-//        if segue.identifier == "ChooseCategory" {
-//            if let chooseCategoryViewController = segue.destination as? ChooseCategoryViewController {
-//                chooseCategoryViewController.expencePrice = Int(newExpencesPrice) ?? 0
-//                chooseCategoryViewController.expenceName = newExpencesName
-//            }
-//            
-//        }
-//            
-//    }
 }
 
 // MARK: - UITextFieldDelegate
@@ -99,6 +73,7 @@ extension AddNewExpenceViewController: UITextFieldDelegate {
         saveButtonBottomConstraint.priority = UILayoutPriority(rawValue: 800)
         
     }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let newText = textField.text {
             if textField == nameTextField {
@@ -128,57 +103,11 @@ private extension AddNewExpenceViewController {
             priceErrorLabel.isHidden = true
             priceTextField.layer.borderWidth = 0.0
         }
-//        if textField.text?.count == 1 {
-//            if textField.text?.first == " " {
-//                textField.text = ""
-//                return
-//            }
-//        }
-//        guard
-//            let name = nameTextField.text, !name.isEmpty,
-//            let price = priceTextField.text, !price.isEmpty
-//        else {
-//            warniingTextOutlet.isHidden = false
-//            saveButtonOutlet.isEnabled = false
-//            saveButtonOutlet.alpha = 0.5
-//            return
-//        }
-//        saveButtonOutlet.isEnabled = true
-//        saveButtonOutlet.alpha = 1.0
-//        warniingTextOutlet.isHidden = true
-        
-
     }
+    
     @objc func didPressOnDoneButton(_ sender: Any) {
-       saveButtonActions()
+        saveButtonActions()
     }
-    
-//    @objc func keyboardWillShow(sender: NSNotification) {
-//         self.saveButtonOutlet.frame.origin.y = +450 // Move view 150 points upward
-//    }
-//
-//    @objc func keyboardWillHide(sender: NSNotification) {
-//         //self.saveButtonOutlet.frame.origin.y = 0 // Move view to original position
-//    }
-    
-//     @objc func keyboardWillShow(sender: NSNotification) {
-//        if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//                    UIView.animate(withDuration: 0.1, animations: { () -> Void in
-//                        self.saveButtonOutlet.frame.origin.y -= keyboardSize.height
-//                        self.saveButtonOutlet.layoutIfNeeded()
-//                    })
-//                }
-//            }
-//
-//    @objc func keyboardWillHide(sender: NSNotification) {
-//        if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//                UIView.animate(withDuration: 0.1, animations: { () -> Void in
-//                    self.saveButtonOutlet.frame.origin.y += keyboardSize.height
-//                    self.saveButtonOutlet.layoutIfNeeded()
-//                })
-//            }
-//        }
-    
 }
 
 extension AddNewExpenceViewController {
@@ -205,7 +134,7 @@ extension AddNewExpenceViewController: ValidationDelegate{
                 field.layer.borderColor = #colorLiteral(red: 0.598151967, green: 0.167491116, blue: 0.2818549418, alpha: 0.8676155822).withAlphaComponent(1.0).cgColor
                 field.layer.borderWidth = 1.0
             }
-            error.errorLabel?.text = error.errorMessage // works if you added labels
+            error.errorLabel?.text = error.errorMessage
             error.errorLabel?.textColor = #colorLiteral(red: 0.598151967, green: 0.167491116, blue: 0.2818549418, alpha: 0.8676155822).withAlphaComponent(1.0)
             error.errorLabel?.isHidden = false
         }

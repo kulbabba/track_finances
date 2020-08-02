@@ -20,13 +20,4 @@ class CategoryCell: UICollectionViewCell {
             alpha = isSelected ? 0.5 : 1.0
         }
     }
-    
-//    func toggleSelected ()
-//     {
-//        if (self.isSelected){
-//            self.backgroundColor = UIColor.black
-//         }else {
-//             self.backgroundColor  = UIColor.white
-//         }
-//     }
 }

@@ -12,9 +12,7 @@
 		7C1E44B424BF5F5A0077FF66 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C1E44B624BF5F5A0077FF66 /* Localizable.strings */; };
 		7C1E44B924BF63AA0077FF66 /* IQKeyboardManagerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E44B824BF63AA0077FF66 /* IQKeyboardManagerSettings.swift */; };
 		7C1E44BB24BF642B0077FF66 /* DBActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E44BA24BF642B0077FF66 /* DBActions.swift */; };
-		7C1E44C824C082030077FF66 /* APiRequestActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E44C724C082030077FF66 /* APiRequestActions.swift */; };
 		7C1E44CA24C08E680077FF66 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E44C924C08E670077FF66 /* Currency.swift */; };
-		7C1E44CC24C090050077FF66 /* FixerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E44CB24C090050077FF66 /* FixerResponse.swift */; };
 		7C1E44CF24C0EFF20077FF66 /* Expences+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E44CD24C0EFF20077FF66 /* Expences+CoreDataClass.swift */; };
 		7C1E44D024C0EFF20077FF66 /* Expences+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E44CE24C0EFF20077FF66 /* Expences+CoreDataProperties.swift */; };
 		7C1E44D224C3472B0077FF66 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E44D124C3472B0077FF66 /* SettingsViewController.swift */; };
@@ -25,6 +23,7 @@
 		7C1E44E724C72D090077FF66 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E44E624C72D090077FF66 /* PasscodeViewController.swift */; };
 		7C661B4B24D47CEB009A8B6A /* MainScreenWithPasscode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C661B4A24D47CEB009A8B6A /* MainScreenWithPasscode.swift */; };
 		7C661B4D24D47D68009A8B6A /* FaceIdTouchIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C661B4C24D47D67009A8B6A /* FaceIdTouchIdViewController.swift */; };
+		7C661B5524D6D29D009A8B6A /* CsvActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C661B5424D6D29D009A8B6A /* CsvActions.swift */; };
 		7C9D1FA124AE7AC6004CA85D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9D1FA024AE7AC6004CA85D /* AppDelegate.swift */; };
 		7C9D1FA324AE7AC6004CA85D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9D1FA224AE7AC6004CA85D /* SceneDelegate.swift */; };
 		7C9D1FA524AE7AC6004CA85D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9D1FA424AE7AC6004CA85D /* MainViewController.swift */; };
@@ -56,9 +55,7 @@
 		7C1E44B724BF5F600077FF66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7C1E44B824BF63AA0077FF66 /* IQKeyboardManagerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQKeyboardManagerSettings.swift; sourceTree = "<group>"; };
 		7C1E44BA24BF642B0077FF66 /* DBActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBActions.swift; sourceTree = "<group>"; };
-		7C1E44C724C082030077FF66 /* APiRequestActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APiRequestActions.swift; sourceTree = "<group>"; };
 		7C1E44C924C08E670077FF66 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
-		7C1E44CB24C090050077FF66 /* FixerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixerResponse.swift; sourceTree = "<group>"; };
 		7C1E44CD24C0EFF20077FF66 /* Expences+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Expences+CoreDataClass.swift"; path = "TrackYourFinances/DBEntities/Expences+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		7C1E44CE24C0EFF20077FF66 /* Expences+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Expences+CoreDataProperties.swift"; path = "TrackYourFinances/DBEntities/Expences+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7C1E44D124C3472B0077FF66 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +66,7 @@
 		7C1E44E624C72D090077FF66 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
 		7C661B4A24D47CEB009A8B6A /* MainScreenWithPasscode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenWithPasscode.swift; sourceTree = "<group>"; };
 		7C661B4C24D47D67009A8B6A /* FaceIdTouchIdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceIdTouchIdViewController.swift; sourceTree = "<group>"; };
+		7C661B5424D6D29D009A8B6A /* CsvActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvActions.swift; sourceTree = "<group>"; };
 		7C9D1F9D24AE7AC6004CA85D /* TrackYourFinances.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackYourFinances.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C9D1FA024AE7AC6004CA85D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C9D1FA224AE7AC6004CA85D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +160,7 @@
 		7C661B5224D6C93E009A8B6A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7C9D1FD624B48DE1004CA85D /* UserDefaults_isFirstLaunch.swift */,
 				7C1E44A924BF2B390077FF66 /* SwiftValidatorExtensions.swift */,
 			);
 			path = Extensions;
@@ -203,13 +202,11 @@
 				7C661B5124D6C903009A8B6A /* TableCells */,
 				7C661B5224D6C93E009A8B6A /* Extensions */,
 				7C9D1FA024AE7AC6004CA85D /* AppDelegate.swift */,
-				7C1E44C724C082030077FF66 /* APiRequestActions.swift */,
-				7C1E44CB24C090050077FF66 /* FixerResponse.swift */,
 				7C1E44C924C08E670077FF66 /* Currency.swift */,
 				7C9D1FA224AE7AC6004CA85D /* SceneDelegate.swift */,
 				7C1E44BA24BF642B0077FF66 /* DBActions.swift */,
+				7C661B5424D6D29D009A8B6A /* CsvActions.swift */,
 				7C1E44B824BF63AA0077FF66 /* IQKeyboardManagerSettings.swift */,
-				7C9D1FD624B48DE1004CA85D /* UserDefaults_isFirstLaunch.swift */,
 				7C9D1FF024BA193C004CA85D /* DateFormate.swift */,
 				7C9D1FA624AE7AC6004CA85D /* Main.storyboard */,
 				7C9D1FAC24AE7ACA004CA85D /* Assets.xcassets */,
@@ -343,13 +340,12 @@
 				7C1E44DE24C35CE10077FF66 /* CurrencyCell.swift in Sources */,
 				7C1E44DB24C35C3E0077FF66 /* Currencies+CoreDataClass.swift in Sources */,
 				7C1E44BB24BF642B0077FF66 /* DBActions.swift in Sources */,
-				7C1E44CC24C090050077FF66 /* FixerResponse.swift in Sources */,
 				7C9D1FC224B3D4B2004CA85D /* ChooseCategoryViewController.swift in Sources */,
-				7C1E44C824C082030077FF66 /* APiRequestActions.swift in Sources */,
 				7C9D1FA524AE7AC6004CA85D /* MainViewController.swift in Sources */,
 				7C1E44AA24BF2B390077FF66 /* SwiftValidatorExtensions.swift in Sources */,
 				7C1E44D024C0EFF20077FF66 /* Expences+CoreDataProperties.swift in Sources */,
 				7C9D1FC024B37A76004CA85D /* AddNewExpenceViewController.swift in Sources */,
+				7C661B5524D6D29D009A8B6A /* CsvActions.swift in Sources */,
 				7C9D1FEC24B4B8C5004CA85D /* Categories+CoreDataClass.swift in Sources */,
 				7C1E44CF24C0EFF20077FF66 /* Expences+CoreDataClass.swift in Sources */,
 				7C1E44B924BF63AA0077FF66 /* IQKeyboardManagerSettings.swift in Sources */,

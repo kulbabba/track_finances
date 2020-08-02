@@ -24,28 +24,25 @@ class StatisticsViewController: UIViewController {
     var categories: [Categories] = []
     var categoriesForTableView: [(category: String, expences: [Expences])] = []
     var statisticsDate: Date = Date()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         categories = getCategoriesFromDb()
         
         categories.filter{ $0.expence.count > 0 }.forEach { category in
-                let expenceArray = Array(category.expence).sorted { (ex1, ex2) -> Bool in
-                    return ex1.price > ex2.price
-                }
+            let expenceArray = Array(category.expence).sorted { (ex1, ex2) -> Bool in
+                return ex1.price > ex2.price
+            }
             let expenceArrayForCurrentDate = expenceArray.filter {
-//                $0.epenceDate?.month ==  statisticsDate.month &&
-//                $0.epenceDate?.year ==  statisticsDate.year &&
-//                $0.epenceDate?.day ==  statisticsDate.day
                 $0.epenceDate!.isSameDay(date: statisticsDate)
             }
             if expenceArrayForCurrentDate.count > 0 {
-                    let categoryTuple = (category.categoryName!, expenceArrayForCurrentDate)
+                let categoryTuple = (category.categoryName!, expenceArrayForCurrentDate)
                 
-                    categoriesForTableView.append(categoryTuple)
+                categoriesForTableView.append(categoryTuple)
             }
-
+            
         }
         if categoriesForTableView.count == 0 {
             showNoExpencesLabels()
@@ -64,7 +61,6 @@ extension StatisticsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-//        return categories.filter{ $0.expence.count > 0 }.count
         return categoriesForTableView.count
     }
     
@@ -74,13 +70,11 @@ extension StatisticsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
-        //headerView.backgroundColor = #colorLiteral(red: 0.3238684347, green: 0.8115482234, blue: 0.7658885481, alpha: 0.6112478596).withAlphaComponent(0.61)
         headerView.backgroundColor = #colorLiteral(red: 0.3238684347, green: 0.8115482234, blue: 0.7658885481, alpha: 0.6112478596).withAlphaComponent(0.25)
         
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
         headerView.addSubview(label)
         
-        //label.text = categories.filter{ $0.expence.count > 0 }[section].categoryName
         label.text = categoriesForTableView[section].category
         label.textColor = .white
         label.textAlignment = .center
@@ -88,15 +82,14 @@ extension StatisticsViewController: UITableViewDataSource, UITableViewDelegate {
         return headerView
     }
     
-    // Provide a cell object for each row.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ExpencesCell = tableView.dequeueReusableCell(withIdentifier: "ExpenceCell", for: indexPath) as! ExpencesCell
-       
+        
         let expence = categoriesForTableView[indexPath.section].expences[indexPath.row]
         cell.expenceNameLabel.text = expence.name
         cell.expencePriceLabe.text = String(expence.price)
-           
-       return cell
+        
+        return cell
     }
 }
 

@@ -9,7 +9,7 @@
 import Foundation
 import Charts
 
- class DateFormate {
+class DateFormate {
     
     static func formateDate (date: Date) -> String {
         let dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMMdd", options: 0, locale: Locale.current)
@@ -28,18 +28,16 @@ import Charts
     static func formatDateToStringFromeTimeStamp (timeInterval: Double, dateFormateString: String = "MMdd") -> String {
         let date = Date(timeIntervalSince1970: timeInterval)
         let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
         dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = dateFormateString //Specify your format that you want
+        dateFormatter.dateFormat = dateFormateString
         let strDate = dateFormatter.string(from: date)
         return strDate
     }
 }
 
-
 extension DateFormate: IAxisValueFormatter {
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        //let date = Date(timeIntervalSince1970: value)
         let dateString = DateFormate.formatDateToStringFromeTimeStamp (timeInterval: value, dateFormateString: "ddMMMM")
         return dateString
     }

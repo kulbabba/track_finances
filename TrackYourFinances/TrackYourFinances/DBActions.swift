@@ -11,100 +11,13 @@ import CoreData
 import UIKit
 
 class DBActions {
+    let categoriesEntityName = "Categories"
+    let currenciesEntityName = "Currencies"
+    let expensesEntityName = "Expences"
     
-    func openCSV(fileName:String, fileType: String)-> String!{
-        guard let filepath = Bundle.main.path(forResource: fileName, ofType: fileType)
-            else {
-                return nil
-        }
-        do {
-            let contents = try String(contentsOfFile: filepath, encoding: .utf8)
-            
-            return contents
-        } catch {
-            print("File Read Error for file \(filepath)")
-            return nil
-        }
-    }
-    
-    func getContentFromCSV(fileName: String) -> [[String]] {
-        
-        let dataString: String! = openCSV(fileName: fileName, fileType: "csv")
-        let lines: [String] = dataString.components(separatedBy: NSCharacterSet.newlines) as [String]
-        var contentsOfFile: [[String]]  = [[]]
-        
-        for line in lines {
-            var values: [String] = []
-            if line != "" {
-                if line.range(of: "\"") != nil {
-                    var textToScan:String = line
-                    var value:String?
-                    var textScanner:Scanner = Scanner(string: textToScan)
-                    while !textScanner.isAtEnd {
-                        if (textScanner.string as NSString).substring(to: 1) == "\"" {
-                            
-                            
-                            textScanner.currentIndex = textScanner.string.index(after: textScanner.currentIndex)
-                            
-                            value = textScanner.scanUpToString("\"")
-                            textScanner.currentIndex = textScanner.string.index(after: textScanner.currentIndex)
-                        } else {
-                            value = textScanner.scanUpToString(",")
-                        }
-                        
-                        values.append(value! as String)
-                        
-                        if !textScanner.isAtEnd{
-                            let indexPlusOne = textScanner.string.index(after: textScanner.currentIndex)
-                            
-                            textToScan = String(textScanner.string[indexPlusOne...])
-                        } else {
-                            textToScan = ""
-                        }
-                        textScanner = Scanner(string: textToScan)
-                    }
-                } else  {
-                    values = line.components(separatedBy: ",")
-                    contentsOfFile.append(values)
-                }
-            }
-        }
-        
-        return contentsOfFile
-        
-    }
-    
-    func parseCategoriesCSV() -> [String]? {
-        let contentsOfCsv = getContentFromCSV(fileName: "Categories")
-        var items: [String] = []
-        for line in contentsOfCsv {
-            if line.count > 0 {
-                let item = line[0]
-                           items.append(item)
-            }
-           
-        }
-        return items
-    }
-    
-    func parseCurrenciesCSV() -> [(name: String, symbol:  String)]? {
-        let contentsOfCsv = getContentFromCSV(fileName: "Currencies")
-        var items: [(name: String, symbol:  String)] = []
-        for line in contentsOfCsv {
-            if line.count > 0 {
-                let currencyName = line[0]
-                           let currencySymbol = line[1]
-                           let currency:(name: String, symbol:  String) = (name: currencyName, symbol: currencySymbol)
-                           items.append(currency)
-            }
-           
-        }
-        return items
-    }
     
     func preloadData () {
-        //guard let items = parseCSV() else { return }
-        guard let items = parseCategoriesCSV() else { return }
+        guard let items = CsvActions().parseCategoriesCSV() else { return }
         
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -116,7 +29,7 @@ class DBActions {
         
         for item in items {
             let entity =
-                NSEntityDescription.entity(forEntityName: "Categories",
+                NSEntityDescription.entity(forEntityName: categoriesEntityName,
                                            in: managedContext)!
             
             let category = Categories(entity: entity,
@@ -133,7 +46,7 @@ class DBActions {
     }
     
     func preloadCurrencies() {
-        guard let items = parseCurrenciesCSV() else { return }
+        guard let items = CsvActions().parseCurrenciesCSV() else { return }
         
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -145,7 +58,7 @@ class DBActions {
         
         for item in items {
             let entity =
-                NSEntityDescription.entity(forEntityName: "Currencies",
+                NSEntityDescription.entity(forEntityName: currenciesEntityName,
                                            in: managedContext)!
             
             let currency = Currencies(entity: entity,
@@ -174,7 +87,7 @@ class DBActions {
         
         
         let entity =
-            NSEntityDescription.entity(forEntityName: "Expences",
+            NSEntityDescription.entity(forEntityName: expensesEntityName,
                                        in: managedContext)!
         
         let expence = Expences(entity: entity,
@@ -184,8 +97,6 @@ class DBActions {
         expence.price = Int32(priceValue)
         expence.category = categoryValue
         
-        
-        // 4
         do {
             try managedContext.save()
         } catch let error as NSError {
@@ -204,7 +115,7 @@ class DBActions {
             appDelegate.persistentContainer.viewContext
         
         let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "Categories")
+            NSFetchRequest<NSManagedObject>(entityName: categoriesEntityName)
         
         do {
             if let categorylist = try managedContext.fetch(fetchRequest) as? [Categories] {
@@ -229,11 +140,11 @@ class DBActions {
             appDelegate.persistentContainer.viewContext
         
         let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "Currencies")
+            NSFetchRequest<NSManagedObject>(entityName: currenciesEntityName)
         
         do {
             if let currencies = try managedContext.fetch(fetchRequest) as? [Currencies] {
-            currenciesList = currencies
+                currenciesList = currencies
             }
             
         } catch let error as NSError {
@@ -243,39 +154,38 @@ class DBActions {
         return currenciesList
     }
     
-        func getExpensesForSpecificDate(startDate: Date, endDate: Date) -> [Expences] {
-            var expensesList: [Expences] = []
-            guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
-                    return expensesList
-            }
-            
-            let managedContext =
-                appDelegate.persistentContainer.viewContext
-            
-            let fetchRequest =
-                NSFetchRequest<Expences>(entityName: "Expences")
-
-            
-            let delete = NSFetchRequest<NSManagedObject>(entityName: "Expences")
-            
-            fetchRequest.predicate = NSPredicate(format: "(epenceDate >= %@) AND (epenceDate <= %@)", startDate.start(of: .day) as NSDate , endDate.end(of: .day) as NSDate)
-            
-            do {
-                //del
-               if let expedddnses = try managedContext.fetch(delete) as? [Expences] {
-                    expensesList = expedddnses
-                }
-                
-                
-                if let expenses = try managedContext.fetch(fetchRequest) as? [Expences] {
-                    expensesList = expenses
-                }
-                
-            } catch let error as NSError {
-                print("Could not fetch. \(error), \(error.userInfo)")
-            }
-            
-            return expensesList
+    func getExpensesForSpecificDate(startDate: Date, endDate: Date) -> [Expences] {
+        var expensesList: [Expences] = []
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return expensesList
         }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest =
+            NSFetchRequest<Expences>(entityName: expensesEntityName)
+        
+        
+        let delete = NSFetchRequest<NSManagedObject>(entityName: expensesEntityName)
+        
+        fetchRequest.predicate = NSPredicate(format: "(epenceDate >= %@) AND (epenceDate <= %@)", startDate.start(of: .day) as NSDate , endDate.end(of: .day) as NSDate)
+        
+        do {
+            if let expedddnses = try managedContext.fetch(delete) as? [Expences] {
+                expensesList = expedddnses
+            }
+            
+            
+            if let expenses = try managedContext.fetch(fetchRequest) as? [Expences] {
+                expensesList = expenses
+            }
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        return expensesList
+    }
 }

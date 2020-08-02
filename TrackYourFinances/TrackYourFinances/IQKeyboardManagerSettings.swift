@@ -10,13 +10,10 @@ import Foundation
 import IQKeyboardManagerSwift
 
 class IQKeyboardManagerSettings {
-        static func setIQKeyboard() {
-            IQKeyboardManager.shared.enable = true
-
-            IQKeyboardManager.shared.overrideKeyboardAppearance = true
-            IQKeyboardManager.shared.keyboardAppearance = .dark
-
-    //        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Save"
-            IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        }
+    static func setIQKeyboard() {
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.overrideKeyboardAppearance = true
+        IQKeyboardManager.shared.keyboardAppearance = .dark
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+    }
 }

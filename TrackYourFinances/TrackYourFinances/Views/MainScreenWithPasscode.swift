@@ -9,9 +9,8 @@
 import UIKit
 import KeychainAccess
 
-
 class MainScreenWithPasscode: UIViewController, UITextInputTraits {
-var keyboardType: UIKeyboardType = .numberPad
+    var keyboardType: UIKeyboardType = .numberPad
     
     @IBOutlet weak var pin_one: UIImageView!
     @IBOutlet weak var pin_two: UIImageView!
@@ -51,10 +50,10 @@ var keyboardType: UIKeyboardType = .numberPad
                     pin.backgroundColor =  #colorLiteral(red: 0.3238684347, green: 0.8115482234, blue: 0.7658885481, alpha: 0.6133882705).withAlphaComponent(0.61)
                 }
                 else {
-                      pin.backgroundColor =  UIColor.lightGray
-                  }
+                    pin.backgroundColor =  UIColor.lightGray
+                }
             }
-  
+            
         }
     }
 }

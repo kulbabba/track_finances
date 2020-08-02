@@ -21,8 +21,6 @@ extension FaceIdTouchIdViewController {
         var error: NSError?
         
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            // This reason is only for Touch ID, not Face ID
-            // The reason for accessing Face ID, is found in Info.plist
             let reason: String = "Please use Touch ID to unlock"
             
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { [weak self] success, authenticationError in
@@ -36,48 +34,14 @@ extension FaceIdTouchIdViewController {
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let mainScreenWithPasscode: MainScreenWithPasscode = storyboard.instantiateViewController(withIdentifier: "MainScreenWithPasscode") as! MainScreenWithPasscode
                         self?.navigationController?.pushViewController(mainScreenWithPasscode, animated: true)
-                        //
-                        //                        // Face wasn't detected
-//                        if let errror = error {
-//                            let ac = UIAlertController(title: "Authetication Failed!",
-//                                                       message: error?.localizedDescription,
-//                                                       preferredStyle: .alert)
-//                            ac.addAction(UIAlertAction(title: "OK", style: .default))
-//                            self?.present(ac, animated: true)
-//                        }
-                        
-                        //                        if let err = authenticationError {
-                        //
-                        //                        switch err._code {
-                        //
-                        //                        case LAError.Code.systemCancel.rawValue:
-                        //                            self?.notifyUser("Session cancelled",
-                        //                                            err: err.localizedDescription)
-                        //
-                        //                        case LAError.Code.userCancel.rawValue:
-                        //                            self?.notifyUser("Please try again",
-                        //                                            err: err.localizedDescription)
-                        //
-                        //                        case LAError.Code.userFallback.rawValue:
-                        //                            self?.notifyUser("Authentication",
-                        //                                            err: "Password option selected")
-                        //                            // Custom code to obtain password here
-                        //
-                        //                        default:
-                        //                            self?.notifyUser("Authentication failed",
-                        //                                            err: err.localizedDescription)
-                        //                            }
-                        //                        }
                     }
                 }
             }
             
         } else {
-            // Biometric is not supported by your iOS device
             let ac = UIAlertController(title: "Biometric Authentication Unavailable",
                                        message: "Your device is not configured for biometric authentication.",
                                        preferredStyle: .alert)
-            //ac.addAction(UIAlertAction(title: "OK", style: .default))
             ac.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -88,20 +52,6 @@ extension FaceIdTouchIdViewController {
             
         }
     }
-    
-    //        func notifyUser(_ msg: String, err: String?) {
-    //            let alert = UIAlertController(title: msg,
-    //                message: err,
-    //                preferredStyle: .alert)
-    //
-    //            let cancelAction = UIAlertAction(title: "OK",
-    //                style: .cancel, handler: nil)
-    //
-    //            alert.addAction(cancelAction)
-    //
-    //            self.present(alert, animated: true,
-    //                                completion: nil)
-    //        }
     
     func reportTouchIDError(error: NSError) -> String {
         switch error.code {
