@@ -8,3 +8,6 @@
 "Text field should not be empty" = "Text field should not be empty";
 "Only numerics" = "Only numerics";
 "No expences" = "No expences";
+"Biometric Authentication Unavailable" = "Biometric Authentication Unavailable";
+"Your device is not configured for biometric authentication." = "Your device is not configured for biometric authentication.";
+"Ok" = "Ok";

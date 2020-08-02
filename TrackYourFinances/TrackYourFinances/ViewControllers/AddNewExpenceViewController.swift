@@ -119,7 +119,7 @@ extension AddNewExpenceViewController {
 
 extension AddNewExpenceViewController: ValidationDelegate{
     func validationSuccessful() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: AppConstants.storyboardMain, bundle: nil)
         let chooseCategoryViewController: ChooseCategoryViewController = storyboard.instantiateViewController(withIdentifier: "ChooseCategoryViewController") as! ChooseCategoryViewController
         
         chooseCategoryViewController.expencePrice = Int(newExpencesPrice) ?? 0

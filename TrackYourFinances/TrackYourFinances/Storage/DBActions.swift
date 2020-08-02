@@ -11,10 +11,6 @@ import CoreData
 import UIKit
 
 class DBActions {
-    let categoriesEntityName = "Categories"
-    let currenciesEntityName = "Currencies"
-    let expensesEntityName = "Expences"
-    
     private var managedContext: NSManagedObjectContext? {
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -30,7 +26,7 @@ class DBActions {
         
         for item in items {
             let entity =
-                NSEntityDescription.entity(forEntityName: categoriesEntityName,
+                NSEntityDescription.entity(forEntityName: DBEntitiesConstants.categoriesEntityName,
                                            in: managedContext)!
             
             let category = Categories(entity: entity,
@@ -50,7 +46,7 @@ class DBActions {
         
         for item in items {
             let entity =
-                NSEntityDescription.entity(forEntityName: currenciesEntityName,
+                NSEntityDescription.entity(forEntityName: DBEntitiesConstants.currenciesEntityName,
                                            in: managedContext)!
             
             let currency = Currencies(entity: entity,
@@ -70,7 +66,7 @@ class DBActions {
         guard let managedContext = managedContext else { return }
         
         let entity =
-            NSEntityDescription.entity(forEntityName: expensesEntityName,
+            NSEntityDescription.entity(forEntityName: DBEntitiesConstants.expensesEntityName,
                                        in: managedContext)!
         
         let expence = Expences(entity: entity,
@@ -92,7 +88,7 @@ class DBActions {
         var categoriesList: [Categories] = []
         guard let managedContext = managedContext else { return categoriesList }
         let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: categoriesEntityName)
+            NSFetchRequest<NSManagedObject>(entityName: DBEntitiesConstants.categoriesEntityName)
         
         do {
             if let categorylist = try managedContext.fetch(fetchRequest) as? [Categories] {
@@ -111,7 +107,7 @@ class DBActions {
         guard let managedContext = managedContext else { return categoriesList }
         
         let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: categoriesEntityName)
+            NSFetchRequest<NSManagedObject>(entityName: DBEntitiesConstants.categoriesEntityName)
         
         fetchRequest.predicate = NSPredicate(format: "(epenceDate >= %@) AND (epenceDate <= %@) ", startDate.start(of: .day) as NSDate , endDate.end(of: .day) as NSDate)
         
@@ -132,7 +128,7 @@ class DBActions {
         guard let managedContext = managedContext else { return currenciesList }
         
         let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: currenciesEntityName)
+            NSFetchRequest<NSManagedObject>(entityName: DBEntitiesConstants.currenciesEntityName)
         
         do {
             if let currencies = try managedContext.fetch(fetchRequest) as? [Currencies] {
@@ -151,10 +147,10 @@ class DBActions {
         guard let managedContext = managedContext else { return expensesList }
         
         let fetchRequest =
-            NSFetchRequest<Expences>(entityName: expensesEntityName)
+            NSFetchRequest<Expences>(entityName: DBEntitiesConstants.expensesEntityName)
         
         
-        let delete = NSFetchRequest<NSManagedObject>(entityName: expensesEntityName)
+        let delete = NSFetchRequest<NSManagedObject>(entityName: DBEntitiesConstants.expensesEntityName)
         
         fetchRequest.predicate = NSPredicate(format: "(epenceDate >= %@) AND (epenceDate <= %@)", startDate.start(of: .day) as NSDate , endDate.end(of: .day) as NSDate)
         

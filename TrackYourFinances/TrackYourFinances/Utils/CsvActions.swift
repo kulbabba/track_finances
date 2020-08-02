@@ -11,9 +11,6 @@ import CoreData
 import UIKit
 
 class CsvActions {
-    let categoriesCsvFileName = "Categories"
-    let currenciesCsvFileName = "Currencies"
-    
     func openCSV(fileName:String, fileType: String)-> String!{
         guard let filepath = Bundle.main.path(forResource: fileName, ofType: fileType)
             else {
@@ -30,7 +27,7 @@ class CsvActions {
     }
     
     func getContentFromCSV(fileName: String) -> [[String]] {
-        let dataString: String! = openCSV(fileName: fileName, fileType: "csv")
+        let dataString: String! = openCSV(fileName: fileName, fileType: Constants.filetype)
         let lines: [String] = dataString.components(separatedBy: NSCharacterSet.newlines) as [String]
         var contentsOfFile: [[String]]  = [[]]
         
@@ -75,7 +72,7 @@ class CsvActions {
     }
     
     func parseCategoriesCSV() -> [String]? {
-        let contentsOfCsv = getContentFromCSV(fileName: categoriesCsvFileName)
+        let contentsOfCsv = getContentFromCSV(fileName: Constants.categoriesCsvFileName)
         var items: [String] = []
         for line in contentsOfCsv {
             if line.count > 0 {
@@ -88,7 +85,7 @@ class CsvActions {
     }
     
     func parseCurrenciesCSV() -> [(name: String, symbol:  String)]? {
-        let contentsOfCsv = getContentFromCSV(fileName: currenciesCsvFileName)
+        let contentsOfCsv = getContentFromCSV(fileName: Constants.currenciesCsvFileName)
         var items: [(name: String, symbol:  String)] = []
         for line in contentsOfCsv {
             if line.count > 0 {
@@ -101,4 +98,10 @@ class CsvActions {
         }
         return items
     }
+}
+
+private struct Constants {
+    static let categoriesCsvFileName = "Categories"
+    static let currenciesCsvFileName = "Currencies"
+    static let filetype = "csv"
 }

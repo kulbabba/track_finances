@@ -26,7 +26,7 @@ class PasscodeViewController: UIViewController {
     var faceIdIsConfigured: Bool = false
     var faceIdCanBeConfigured: Bool = false
     
-    let keychain = Keychain(service: "FinanceAPP")
+    let keychain = Keychain(service: AppConstants.keyChainFinanceAPP)
     
     var newPassword: String = ""
     var confirmNewPassword: String = ""
@@ -34,8 +34,8 @@ class PasscodeViewController: UIViewController {
     
     override func viewDidLoad () {
         super.viewDidLoad()
-        passcodeIsConfigured =  UserDefaults.standard.bool(forKey: "passcodeIsConfigured")
-        faceIdIsConfigured =  UserDefaults.standard.bool(forKey: "faceIdIsConfigured")
+        passcodeIsConfigured = UserDefaults.standard.bool(forKey: UserDefaultsKeys.passcodeIsConfigured)
+        faceIdIsConfigured =  UserDefaults.standard.bool(forKey: UserDefaultsKeys.faceIdIsConfigured)
         
         newPasscoeTextField.delegate = self
         confirmPasscodeTextField.delegate = self
@@ -45,7 +45,7 @@ class PasscodeViewController: UIViewController {
                                                           action: #selector(self.didTap))
         
         validator.registerField(confirmPasscodeTextField,errorLabel: confirmPasscodeLabel, rules: [RequiredRule(message: NSLocalizedString("Text field should not be empty", comment: "")),
-                                                                                                   ConfirmationRule(confirmField: newPasscoeTextField), MaxLengthRule(length: 4, message: NSLocalizedString("Length should be 4", comment: "")), MinLengthRule(length: 4, message: NSLocalizedString("Length should be 4", comment: ""))])
+                                                                                                   ConfirmationRule(confirmField: newPasscoeTextField), MaxLengthRule(length: Constants.maxPasswordLengh, message: NSLocalizedString("Length should be 4", comment: "")), MinLengthRule(length: Constants.maxPasswordLengh, message: NSLocalizedString("Length should be 4", comment: ""))])
         
 
         view.addGestureRecognizer(tapGestureRecognizer)
@@ -78,10 +78,10 @@ class PasscodeViewController: UIViewController {
     
     @IBAction func faceIdSwitch(_ sender: Any) {
         if faceIdSwitch.isOn {
-            UserDefaults.standard.set(true, forKey: "faceIdIsConfigured")
+            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.faceIdIsConfigured)
         }
         if !faceIdSwitch.isOn {
-            UserDefaults.standard.set(false, forKey: "faceIdIsConfigured")
+            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.faceIdIsConfigured)
         }
     }
     
@@ -125,12 +125,10 @@ class PasscodeViewController: UIViewController {
             newPasscoeTextField.isHidden = true
             faceIdSwitch.setOn(false, animated: true)
             faceIdSwitch.isOn = false
-            keychain["Password"] = nil
-            UserDefaults.standard.set(false, forKey: "faceIdIsConfigured")
-            UserDefaults.standard.set(false, forKey: "passcodeIsConfigured")
-            
+            keychain[AppConstants.keyChainPassword] = nil
+            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.faceIdIsConfigured)
+            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.passcodeIsConfigured)
         }
-        
     }
 }
 
@@ -144,7 +142,7 @@ extension PasscodeViewController: UITextFieldDelegate {
         }
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
-        return count <= 4
+        return count <= Constants.maxPasswordLengh
     }
     
     func  textFieldDidBeginEditing(_ textField: UITextField) {
@@ -197,12 +195,12 @@ extension PasscodeViewController {
 
 extension PasscodeViewController: ValidationDelegate{
     func validationSuccessful() {
-         UserDefaults.standard.set(true, forKey: "passcodeIsConfigured")
+         UserDefaults.standard.set(true, forKey: UserDefaultsKeys.passcodeIsConfigured)
         newPasscoeTextField.isHidden = true
         confirmPasscodeTextField.isHidden = true
         changePasscodeButtonOutlet.isHidden = false
         
-        keychain["Password"] = newPassword
+        keychain[AppConstants.keyChainPassword] = newPassword
     }
     
     func validationFailed(_ errors: [(Validatable, ValidationError)]) {
@@ -216,4 +214,8 @@ extension PasscodeViewController: ValidationDelegate{
             error.errorLabel?.isHidden = false
         }
     }
+}
+
+private struct Constants {
+    static let maxPasswordLengh = 4
 }

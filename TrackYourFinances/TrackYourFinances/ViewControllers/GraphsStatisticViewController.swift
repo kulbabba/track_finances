@@ -94,17 +94,15 @@ extension GraphsStatisticViewController {
         lineChartEntry2.append(ChartDataEntry(x: date3.timeIntervalSince1970, y: Double(6)))
         lineChartEntry2.append(ChartDataEntry(x: date4.timeIntervalSince1970, y: Double(10)))
         
-        let line1 = LineChartDataSet(entries: lineChartEntry, label: "vvv")
+        let line1 = LineChartDataSet(entries: lineChartEntry)
         line1.drawCirclesEnabled = false
         line1.mode = .cubicBezier
         line1.lineWidth = 3
         line1.setColor(.orange, alpha: 1)
         line1.setDrawHighlightIndicators(false)
-        line1.addColor(.orange)
-        
-        let line2 = LineChartDataSet(entries: lineChartEntry2, label: "vvddddv")
+        line1.addColor(.orange)    
         line1.colors = [UIColor.blue]
-
+        
         let yAxis = lineChartView.leftAxis
         yAxis.labelTextColor = .white
         yAxis.labelPosition = .outsideChart

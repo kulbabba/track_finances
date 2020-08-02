@@ -8,3 +8,6 @@
 "Text field should not be empty" = "Поле не повинне бути пустим";
 "Only numerics" = "Лише цифри";
 "No expences" = "Жодних витрат";
+"Biometric Authentication Unavailable" = "Біометрична автентифікація неможлива";
+"Your device is not configured for biometric authentication." = "Біометрична автентифікація не налаштована на вашому приоаді";
+"Ok" = "Ок";

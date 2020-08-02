@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
         dayHeaderView.updateStyle(calendarStyle)
         dayHeaderView.backgroundColor = #colorLiteral(red: 0.1095174178, green: 0.1127971485, blue: 0.1583940983, alpha: 1).withAlphaComponent(1.0)
         dayHeaderView.delegate = self
-        let formattedDate = DateFormate.formateDateForStatistics(date: Date(), dateFormateString: "MMMMdd")
+        let formattedDate = DateFormate.formateDateForStatistics(date: Date(), dateFormateString: Constants.dateFormat)
         dateLabelValue.setTitle(formattedDate, for: .normal)
     }
     
@@ -67,7 +67,7 @@ class MainViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "StatisticsViewController" {
+        if segue.identifier == StoryBoardIdentifiersConstants.statisticsViewController {
             if let statisticsViewController = segue.destination as? StatisticsViewController {
                 if let date = dateLabelValue.titleLabel?.text {
                     statisticsViewController.dateLabelValue = date
@@ -75,10 +75,9 @@ class MainViewController: UIViewController {
                 }
             }            
         }
-        if segue.identifier == "AddNewExpenceViewController" {
+        if segue.identifier == StoryBoardIdentifiersConstants.addNewExpenceViewController {
             if let addNewExpenceViewController = segue.destination as? AddNewExpenceViewController {
                 addNewExpenceViewController.expenceDate = chosenDate
-                
             }
         }
     }
@@ -90,27 +89,27 @@ extension MainViewController: DayViewDelegate {
     
     func dayViewDidLongPressEventView(_ eventView: EventView) {
     }
-    
+
     func dayView(dayView: DayView, didTapTimelineAt date: Date) {
     }
-    
+
     func dayView(dayView: DayView, didLongPressTimelineAt date: Date) {
     }
-    
+
     func dayViewDidBeginDragging(dayView: DayView) {
     }
-    
+
     func dayView(dayView: DayView, willMoveTo date: Date) {
     }
-    
+
     func dayView(dayView: DayView, didMoveTo date: Date) {
         chosenDate = date
-        let formattedDate = DateFormate.formateDateForStatistics(date: date, dateFormateString: "MMMMdd")
+        let formattedDate = DateFormate.formateDateForStatistics(date: date, dateFormateString: Constants.dateFormat)
         
         dateLabelValue.setTitle(formattedDate, for: .normal)
         showChartWithExpenses(categories: categiriesWithValue, date: chosenDate)
     }
-    
+
     func dayView(dayView: DayView, didUpdate event: EventDescriptor) {
     }
 }
@@ -137,7 +136,7 @@ extension MainViewController {
         
         var swipeLabel = SwipeLabelStyle()
         swipeLabel.textColor = white
-        swipeLabel.font = UIFont(name: "ArialMT", size: 0.0)!
+        swipeLabel.font = UIFont(name: Constants.swipeLabelFont, size: Constants.swipeLabelSize)!
         
         var header = DayHeaderStyle()
         header.daySelector = selector
@@ -195,8 +194,19 @@ extension MainViewController {
         
         pieChart.data = pieChartData
         pieChart.holeColor = UIColor.black.withAlphaComponent(0.0)
-        pieChart.entryLabelFont = UIFont(name: "BradleyHandITCTT-Bold", size: 12)
+        pieChart.entryLabelFont = UIFont(name: Constants.pieChartLabelFont, size: Constants.pieChartLabelSize)
         
-        pieChart.holeRadiusPercent = 0.52
+        pieChart.holeRadiusPercent = Constants.holeRadiusPercent
     }    
 }
+
+private struct Constants {
+    static let holeRadiusPercent: CGFloat = 0.52
+    static let pieChartLabelSize: CGFloat = 12
+    static let pieChartLabelFont = "BradleyHandITCTT-Bold"
+    static let swipeLabelSize: CGFloat = 0.0
+    static let swipeLabelFont = "ArialMT"
+    static let dateFormat = "MMMMdd"
+    
+}
+

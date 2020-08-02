@@ -10,10 +10,9 @@ import Foundation
 
 extension UserDefaults {
     static func isFirstLaunch() -> Bool {
-        let hasBeenLaunchedBeforeFlag = "hasBeenLaunchedBeforeFlag"
-        let isFirstLaunch = !UserDefaults.standard.bool(forKey: hasBeenLaunchedBeforeFlag)
+        let isFirstLaunch = !UserDefaults.standard.bool(forKey: UserDefaultsKeys.hasBeenLaunchedBeforeFlag)
         if (isFirstLaunch) {
-            UserDefaults.standard.set(true, forKey: hasBeenLaunchedBeforeFlag)
+            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hasBeenLaunchedBeforeFlag)
             UserDefaults.standard.synchronize()
         }
         return isFirstLaunch

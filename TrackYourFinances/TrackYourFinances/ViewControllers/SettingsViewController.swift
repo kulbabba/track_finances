@@ -28,7 +28,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: CurrencyCell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell", for: indexPath) as! CurrencyCell
+        let cell: CurrencyCell = tableView.dequeueReusableCell(withIdentifier: StoryBoardIdentifiersConstants.currencyCellIdentifiew, for: indexPath) as! CurrencyCell
         
         let currencyName = currencies[indexPath.row].currencyName
         cell.currencyNameOutlet.text = currencyName

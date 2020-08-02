@@ -19,7 +19,7 @@ class MainScreenWithPasscode: UIViewController, UITextInputTraits {
     
     var didFinishedEnterCode:((String)-> Void)?
     var pinList: [UIView] = []
-        var maxLength = 4
+    var maxLength = 4
     
     var code: String = "" {
         didSet {
@@ -58,6 +58,8 @@ class MainScreenWithPasscode: UIViewController, UITextInputTraits {
     }
 }
 
+// MARK: - UIKeyInput
+
 extension MainScreenWithPasscode: UIKeyInput {
     var hasText: Bool {
         return code.count > 0
@@ -80,6 +82,8 @@ extension MainScreenWithPasscode: UIKeyInput {
     
 }
 
+// MARK: - Keyboard methods
+
 extension MainScreenWithPasscode {
     
     override var canBecomeFirstResponder: Bool {
@@ -94,13 +98,15 @@ extension MainScreenWithPasscode {
     }
 }
 
-extension MainScreenWithPasscode {
+// MARK: - Private methods
+
+private extension MainScreenWithPasscode {
     func verifyPasscodeEntered() {
-        let keychain = Keychain(service: "FinanceAPP")
-        let passcodeSaved = keychain["Password"]
+        let keychain = Keychain(service: AppConstants.keyChainFinanceAPP)
+        let passcodeSaved = keychain[AppConstants.keyChainPassword]
         if code == passcodeSaved {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainViewController: MainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+            let storyboard = UIStoryboard(name: AppConstants.storyboardMain, bundle: nil)
+            let mainViewController: MainViewController = storyboard.instantiateViewController(withIdentifier: StoryBoardIdentifiersConstants.mainViewController) as! MainViewController
             
             navigationController?.pushViewController(mainViewController, animated: true)
         }

@@ -26,7 +26,7 @@ class StatisticsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        categories = getCategoriesFromDb()
+        categories = DBActions().getCategoriesFromDb()
         
         categories.filter{ $0.expence.count > 0 }.forEach { category in
             let expenceArray = Array(category.expence).sorted { (ex1, ex2) -> Bool in
@@ -81,7 +81,7 @@ extension StatisticsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: ExpencesCell = tableView.dequeueReusableCell(withIdentifier: "ExpenceCell", for: indexPath) as! ExpencesCell
+        let cell: ExpencesCell = tableView.dequeueReusableCell(withIdentifier: StoryBoardIdentifiersConstants.expenceCellIdentifiew, for: indexPath) as! ExpencesCell
         
         let expence = categoriesForTableView[indexPath.section].expences[indexPath.row]
         cell.expenceNameLabel.text = expence.name
@@ -92,31 +92,31 @@ extension StatisticsViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension StatisticsViewController {
-    func getCategoriesFromDb() -> [Categories] {
-        var actualCategoriesList: [Categories] = []
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return actualCategoriesList
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "Categories")
-        
-        do {
-            if let categorylist = try managedContext.fetch(fetchRequest) as? [Categories] {
-                categorylist.forEach { category in
-                    
-                }
-                actualCategoriesList = categorylist
-            }
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        return actualCategoriesList
-    }
+//    func getCategoriesFromDb() -> [Categories] {
+//        var actualCategoriesList: [Categories] = []
+//        guard let appDelegate =
+//            UIApplication.shared.delegate as? AppDelegate else {
+//                return actualCategoriesList
+//        }
+//
+//        let managedContext =
+//            appDelegate.persistentContainer.viewContext
+//
+//        let fetchRequest =
+//            NSFetchRequest<NSManagedObject>(entityName: "Categories")
+//
+//        do {
+//            if let categorylist = try managedContext.fetch(fetchRequest) as? [Categories] {
+//                categorylist.forEach { category in
+//
+//                }
+//                actualCategoriesList = categorylist
+//            }
+//        } catch let error as NSError {
+//            print("Could not fetch. \(error), \(error.userInfo)")
+//        }
+//        return actualCategoriesList
+//    }
     
     public func showNoExpencesLabels () {
         noExpenceLabel.isHidden = false
