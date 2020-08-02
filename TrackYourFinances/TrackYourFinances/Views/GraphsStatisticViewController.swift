@@ -14,9 +14,7 @@ class GraphsStatisticViewController: UIViewController {
     @IBOutlet weak var fromDateLabel: UIButton!
     @IBOutlet weak var toDateLabel: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
-    
     @IBOutlet weak var lineChartView: LineChartView!
-    
     
     var fromDateValue = Date()
     var toDateValue = Date()
@@ -29,13 +27,11 @@ class GraphsStatisticViewController: UIViewController {
     override func viewDidLoad() {
         fromDateLabel.setTitle(DateFormate.formateDateForStatistics(date: fromDateValue), for: .normal)
         toDateLabel.setTitle(DateFormate.formateDateForStatistics(date: toDateValue), for: .normal)
-        
         datePicker.setValue(UIColor.white, forKeyPath: "textColor")
         datePicker.alpha = 0.0
         datePicker.maximumDate = maximumToDate
     }
-    
-    
+        
     @IBAction func fromDateAction(_ sender: Any) {
         datePicker.alpha = 1.0
         datePicker.setDate(fromDateValue, animated: true)
@@ -73,7 +69,6 @@ class GraphsStatisticViewController: UIViewController {
             toDateValue = datePicker.date
         }
     }
-    
 }
 
 extension GraphsStatisticViewController {
@@ -87,7 +82,6 @@ extension GraphsStatisticViewController {
         
         lineChartView.xAxis.valueFormatter = DateFormate()
         
-        
         var lineChartEntry2 = [ChartDataEntry]()
         let date4 = Date()
         let date3 = date4.addingTimeInterval(TimeInterval(-5.0 * 60.0))
@@ -100,7 +94,6 @@ extension GraphsStatisticViewController {
         lineChartEntry2.append(ChartDataEntry(x: date3.timeIntervalSince1970, y: Double(6)))
         lineChartEntry2.append(ChartDataEntry(x: date4.timeIntervalSince1970, y: Double(10)))
         
-        
         let line1 = LineChartDataSet(entries: lineChartEntry, label: "vvv")
         line1.drawCirclesEnabled = false
         line1.mode = .cubicBezier
@@ -111,7 +104,7 @@ extension GraphsStatisticViewController {
         
         let line2 = LineChartDataSet(entries: lineChartEntry2, label: "vvddddv")
         line1.colors = [UIColor.blue]
-        
+
         let yAxis = lineChartView.leftAxis
         yAxis.labelTextColor = .white
         yAxis.labelPosition = .outsideChart

@@ -11,17 +11,16 @@ import UIKit
 class SettingsViewController: UIViewController {
     
     @IBOutlet weak var currencyTableView: UITableView!
-
-        var currencies: [Currencies] = []
-
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            
-            currencies = DBActions().getCurrenciesFromDb()
-        }
+    
+    var currencies: [Currencies] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        currencies = DBActions().getCurrenciesFromDb()
     }
+}
 
-    // MARK: - UITableViewDataSource, UITableViewDelegate
+// MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,4 +35,4 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    }
+}

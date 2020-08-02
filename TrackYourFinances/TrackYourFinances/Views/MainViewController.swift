@@ -15,8 +15,8 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var dayHeaderView: DayView!
     @IBOutlet weak var dateLabelValue: UIButton!
-    
     @IBOutlet weak var noDataLabel: UILabel!
+    @IBOutlet weak var pieChart: PieChartView!
     
     var expences: [Expences] = []
     var categories: [Categories] = []
@@ -35,7 +35,6 @@ class MainViewController: UIViewController {
         dayHeaderView.updateStyle(calendarStyle)
         dayHeaderView.backgroundColor = #colorLiteral(red: 0.1095174178, green: 0.1127971485, blue: 0.1583940983, alpha: 1).withAlphaComponent(1.0)
         dayHeaderView.delegate = self
-        
         let formattedDate = DateFormate.formateDateForStatistics(date: Date(), dateFormateString: "MMMMdd")
         dateLabelValue.setTitle(formattedDate, for: .normal)
     }
@@ -53,7 +52,6 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func addExpensesButton(_ sender: Any) {
-        
     }
     
     private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
@@ -67,9 +65,7 @@ class MainViewController: UIViewController {
         }
         return colors
     }
-    
-    @IBOutlet weak var pieChart: PieChartView!
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "StatisticsViewController" {
             if let statisticsViewController = segue.destination as? StatisticsViewController {
@@ -77,20 +73,15 @@ class MainViewController: UIViewController {
                     statisticsViewController.dateLabelValue = date
                     statisticsViewController.statisticsDate = chosenDate
                 }
-                
-            }
-            
+            }            
         }
         if segue.identifier == "AddNewExpenceViewController" {
             if let addNewExpenceViewController = segue.destination as? AddNewExpenceViewController {
                 addNewExpenceViewController.expenceDate = chosenDate
                 
             }
-            
         }
-        
     }
-    
 }
 
 extension MainViewController: DayViewDelegate {
@@ -114,7 +105,6 @@ extension MainViewController: DayViewDelegate {
     
     func dayView(dayView: DayView, didMoveTo date: Date) {
         chosenDate = date
-        //let formattedDate = DateFormate.formateDate(date: date)
         let formattedDate = DateFormate.formateDateForStatistics(date: date, dateFormateString: "MMMMdd")
         
         dateLabelValue.setTitle(formattedDate, for: .normal)
@@ -123,8 +113,6 @@ extension MainViewController: DayViewDelegate {
     
     func dayView(dayView: DayView, didUpdate event: EventDescriptor) {
     }
-    
-    
 }
 
 extension MainViewController {
@@ -169,11 +157,9 @@ extension MainViewController {
         style.timeline = timeline
         
         return style
-        
     }
     
     func showChartWithExpenses(categories: [Categories], date: Date) {
-        
         let categoriesForCurrentDate = CategoryFilter().filterCategoryForDate(date: date, categories: categories)
         let categoryWithCalculatedExpence = CategoryFilter().filterCategoriesWithCalculatedExpense(categories: categoriesForCurrentDate)
         

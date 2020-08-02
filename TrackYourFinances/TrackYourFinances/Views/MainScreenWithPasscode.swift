@@ -19,6 +19,7 @@ class MainScreenWithPasscode: UIViewController, UITextInputTraits {
     
     var didFinishedEnterCode:((String)-> Void)?
     var pinList: [UIView] = []
+        var maxLength = 4
     
     var code: String = "" {
         didSet {
@@ -31,7 +32,6 @@ class MainScreenWithPasscode: UIViewController, UITextInputTraits {
             }
         }
     }
-    var maxLength = 4
     
     override func viewDidLoad() {
         pinList = [pin_one, pin_two, pin_three, pin_four]
@@ -62,6 +62,7 @@ extension MainScreenWithPasscode: UIKeyInput {
     var hasText: Bool {
         return code.count > 0
     }
+    
     func insertText(_ text: String) {
         if code.count == maxLength {
             return
@@ -78,7 +79,6 @@ extension MainScreenWithPasscode: UIKeyInput {
     }
     
 }
-
 
 extension MainScreenWithPasscode {
     

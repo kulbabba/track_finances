@@ -54,8 +54,7 @@ class PasscodeViewController: UIViewController {
         setupView()
         
     }
-    
-    
+        
     @IBAction func changePasscodeButton(_ sender: Any) {
         
     }
@@ -67,6 +66,7 @@ class PasscodeViewController: UIViewController {
         }
 
     }
+    
     @IBAction func passcodeSwitch(_ sender: Any) {
         if passcodeSwitch.isOn {
             passcodeSwitchIsUpdated(isSwitchedOn: true)
@@ -75,6 +75,7 @@ class PasscodeViewController: UIViewController {
             passcodeSwitchIsUpdated(isSwitchedOn: false)
         }
     }
+    
     @IBAction func faceIdSwitch(_ sender: Any) {
         if faceIdSwitch.isOn {
             UserDefaults.standard.set(true, forKey: "faceIdIsConfigured")
@@ -133,7 +134,6 @@ class PasscodeViewController: UIViewController {
     }
 }
 
-
 // MARK: - UITextFieldDelegate
 
 extension PasscodeViewController: UITextFieldDelegate {
@@ -151,6 +151,7 @@ extension PasscodeViewController: UITextFieldDelegate {
         textField.becomeFirstResponder()
         
     }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let newText = textField.text {
             if textField == newPasscoeTextField {
@@ -161,7 +162,6 @@ extension PasscodeViewController: UITextFieldDelegate {
         }
     }
 }
-
 
 // MARK: - Actions
 
@@ -179,12 +179,12 @@ private extension PasscodeViewController {
         }
 
     }
+    
     @objc func didPressOnDoneButton(_ sender: Any) {
        saveButtonActions()
     }
     
 }
-
 
 extension PasscodeViewController {
     func saveButtonActions() {

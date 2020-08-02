@@ -15,7 +15,6 @@ class DBActions {
     let currenciesEntityName = "Currencies"
     let expensesEntityName = "Expences"
     
-    
     func preloadData () {
         guard let items = CsvActions().parseCategoriesCSV() else { return }
         
@@ -63,8 +62,7 @@ class DBActions {
             
             let currency = Currencies(entity: entity,
                                       insertInto: managedContext)
-            
-            
+                        
             currency.currencyName = item.name
             currency.currencySymbol = item.symbol
             do {

@@ -14,9 +14,7 @@ class StatisticsViewController: UIViewController {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var expencesTableView: UITableView!
-    
-    @IBOutlet weak var noExpenceLabel: UILabel!
-    
+    @IBOutlet weak var noExpenceLabel: UILabel!    
     @IBOutlet weak var noDataIconOutlet: UILabel!
     
     var dateLabelValue: String = ""
