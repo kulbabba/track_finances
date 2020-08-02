@@ -74,56 +74,6 @@ class DBActions {
         
     }
     
-//    func parseCSV() -> [String]? {
-//
-//        let dataString: String! = openCSV(fileName: "Categories", fileType: "csv")
-//        var items: [String] = []
-//        let lines: [String] = dataString.components(separatedBy: NSCharacterSet.newlines) as [String]
-//
-//        for line in lines {
-//            var values: [String] = []
-//            if line != "" {
-//                if line.range(of: "\"") != nil {
-//                    var textToScan:String = line
-//                    var value:String?
-//                    var textScanner:Scanner = Scanner(string: textToScan)
-//                    while !textScanner.isAtEnd {
-//                        if (textScanner.string as NSString).substring(to: 1) == "\"" {
-//
-//
-//                            textScanner.currentIndex = textScanner.string.index(after: textScanner.currentIndex)
-//
-//                            value = textScanner.scanUpToString("\"")
-//                            textScanner.currentIndex = textScanner.string.index(after: textScanner.currentIndex)
-//                        } else {
-//                            value = textScanner.scanUpToString(",")
-//                        }
-//
-//                        values.append(value! as String)
-//
-//                        if !textScanner.isAtEnd{
-//                            let indexPlusOne = textScanner.string.index(after: textScanner.currentIndex)
-//
-//                            textToScan = String(textScanner.string[indexPlusOne...])
-//                        } else {
-//                            textToScan = ""
-//                        }
-//                        textScanner = Scanner(string: textToScan)
-//                    }
-//                } else  {
-//                    values = line.components(separatedBy: ",")
-//                }
-//
-//                // Put the values into the tuple and add it to the items array
-//                let item = values[0]
-//                items.append(item)
-//                print(item)
-//            }
-//        }
-//
-//        return items
-//    }
-    
     func parseCategoriesCSV() -> [String]? {
         let contentsOfCsv = getContentFromCSV(fileName: "Categories")
         var items: [String] = []
@@ -292,4 +242,40 @@ class DBActions {
         
         return currenciesList
     }
+    
+        func getExpensesForSpecificDate(startDate: Date, endDate: Date) -> [Expences] {
+            var expensesList: [Expences] = []
+            guard let appDelegate =
+                UIApplication.shared.delegate as? AppDelegate else {
+                    return expensesList
+            }
+            
+            let managedContext =
+                appDelegate.persistentContainer.viewContext
+            
+            let fetchRequest =
+                NSFetchRequest<Expences>(entityName: "Expences")
+
+            
+            let delete = NSFetchRequest<NSManagedObject>(entityName: "Expences")
+            
+            fetchRequest.predicate = NSPredicate(format: "(epenceDate >= %@) AND (epenceDate <= %@)", startDate.start(of: .day) as NSDate , endDate.end(of: .day) as NSDate)
+            
+            do {
+                //del
+               if let expedddnses = try managedContext.fetch(delete) as? [Expences] {
+                    expensesList = expedddnses
+                }
+                
+                
+                if let expenses = try managedContext.fetch(fetchRequest) as? [Expences] {
+                    expensesList = expenses
+                }
+                
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+            
+            return expensesList
+        }
 }
