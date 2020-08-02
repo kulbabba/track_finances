@@ -63,7 +63,7 @@ extension AddNewExpenceViewController: UITextFieldDelegate {
             let stringRange = Range(range, in: oldText) else {
                 return false
         }
-        let newText = oldText.replacingCharacters(in: stringRange, with: string)
+        _ = oldText.replacingCharacters(in: stringRange, with: string)
         return true
     }
     

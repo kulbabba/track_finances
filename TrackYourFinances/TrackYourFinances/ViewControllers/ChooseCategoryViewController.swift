@@ -71,6 +71,6 @@ extension ChooseCategoryViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }        
+        guard collectionView.cellForItem(at: indexPath) != nil else { return }        
     }
 }
