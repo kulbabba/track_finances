@@ -73,7 +73,7 @@ class DBActions {
         }
     }
     
-    func save(nameValue: String, priceValue: Int, categoryValue: Categories) {
+    func save(nameValue: String, priceValue: Int, categoryValue: Categories, expenceDate: Date) {
         
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -94,6 +94,7 @@ class DBActions {
         expence.name = nameValue
         expence.price = Int32(priceValue)
         expence.category = categoryValue
+        expence.epenceDate = expenceDate
         
         do {
             try managedContext.save()

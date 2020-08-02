@@ -23,7 +23,7 @@ class ChooseCategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getCategoriesFromDb()
+        categories = DBActions().getCategoriesFromDb()
         configureDataSource()
         configureSnapshot()
     }
@@ -38,63 +38,10 @@ class ChooseCategoryViewController: UIViewController {
             let indexPath = collectionView.indexPathsForSelectedItems?.first,
             let cell = collectionView.cellForItem(at: indexPath) as? CategoryCell,
             let category = cell.category {
-            save(nameValue: expenceName, priceValue: expencePrice, categoryValue: category)
+            DBActions().save(nameValue: expenceName, priceValue: expencePrice, categoryValue: category, expenceDate: expenceDate)
         }
         
         navigationController?.popToRootViewController(animated: true)
-    }
-}
-
-extension ChooseCategoryViewController {
-    func save(nameValue: String, priceValue: Int, categoryValue: Categories) {
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        
-        let entity =
-            NSEntityDescription.entity(forEntityName: "Expences",
-                                       in: managedContext)!
-        
-        let expence = Expences(entity: entity,
-                               insertInto: managedContext)
-        
-        expence.name = nameValue
-        expence.price = Int32(priceValue)
-        expence.category = categoryValue
-        expence.epenceDate = expenceDate
-        
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-    }
-    
-    func getCategoriesFromDb() {
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "Categories")
-        
-        do {
-            if let categorylist = try managedContext.fetch(fetchRequest) as? [Categories] {
-                categories = categorylist
-            }
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
     }
 }
 
